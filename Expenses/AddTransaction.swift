@@ -32,13 +32,24 @@ class AddTransaction: UIViewController {
     
     @IBAction func saveButton(_ sender: Any) {
         guard let name = nameTextField.text, let cost = costTextField.text, let totalMoney = returnTotalMoney(price: Int(cost) ?? 0), !name.isEmpty, !cost.isEmpty else { return }
-        let item = ExpensesItem(name: name, cost: cost, operation: plassOrMinus.selectedSegmentIndex, date: dateFormater.string(from: datePicker.date), total: totalMoney)
-        complition?(item)
+        
+        FirestoreServise.shared.saveTransactionWith(name: name,
+                                                    cost: cost,
+                                                    operation: String(plassOrMinus.selectedSegmentIndex),
+                                                    date: dateFormater.string(from: datePicker.date),
+                                                    total: totalMoney) { result in
+            switch result {
+            case .success(let success):
+                self.complition?(success)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
     
-    private func returnTotalMoney(price: Int) -> Int? {
-        guard var totalMonay = Int(navigationController?.title ?? "0") else { return 0 }
+    private func returnTotalMoney(price: Int) -> String? {
+        guard var totalMonay = Int(navigationController?.title ?? "0") else { return nil }
         
         switch plassOrMinus.selectedSegmentIndex {
         case 0:
@@ -51,7 +62,7 @@ class AddTransaction: UIViewController {
             totalMonay -= price
         }
         
-        return totalMonay
+        return String(totalMonay)
     }
     
     private func createAlert(message: String) {

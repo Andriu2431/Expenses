@@ -1,0 +1,6 @@
+framework module Pods_Expenses {
+  umbrella header "Pods-Expenses-umbrella.h"
+
+  export *
+  module * { export * }
+}

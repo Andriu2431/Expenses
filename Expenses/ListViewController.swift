@@ -7,14 +7,6 @@
 
 import UIKit
 
-struct ExpensesItem: Codable {
-    var name: String
-    var cost: String
-    var operation: Int
-    var date: String
-    var total: Int
-}
-
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +21,7 @@ class ListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if case let addTransaction as AddTransaction = segue.destination, segue.identifier == "segue" {
             addTransaction.complition = { [unowned self] item in
-                self.title = String(item.total)
+                self.title = item.total
                 self.items.append(item)
                 self.tableView.reloadData()
             }
@@ -53,14 +45,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.name.text = item.name
         cell.dateLabel.text = item.date
         switch item.operation {
-        case 0:
+        case "0":
             cell.cost.text = "+\(item.cost) грн"
             cell.cost.textColor = .green
-        case 1:
+        default:
             cell.cost.text = "-\(item.cost) грн"
             cell.cost.textColor = .red
-        default:
-            break
         }
         return cell
     }
