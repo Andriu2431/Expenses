@@ -9,8 +9,7 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var forWhat: UILabel!
-    @IBOutlet weak var descriptionForWhat: UILabel!
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var cost: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     

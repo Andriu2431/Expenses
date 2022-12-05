@@ -9,25 +9,25 @@
 /* Begin PBXBuildFile section */
 		1616C308291BBF8C000C0043 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C307291BBF8C000C0043 /* AppDelegate.swift */; };
 		1616C30A291BBF8C000C0043 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C309291BBF8C000C0043 /* SceneDelegate.swift */; };
-		1616C30C291BBF8C000C0043 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C30B291BBF8C000C0043 /* ViewController.swift */; };
+		1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C30B291BBF8C000C0043 /* ListViewController.swift */; };
 		1616C30F291BBF8C000C0043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1616C30D291BBF8C000C0043 /* Main.storyboard */; };
 		1616C311291BBF90000C0043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1616C310291BBF90000C0043 /* Assets.xcassets */; };
 		1616C314291BBF90000C0043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1616C312291BBF90000C0043 /* LaunchScreen.storyboard */; };
 		1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31B291BC295000C0043 /* CustomTableViewCell.swift */; };
-		1616C31E291BCA56000C0043 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31D291BCA56000C0043 /* DetailViewController.swift */; };
+		1616C31E291BCA56000C0043 /* AddTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31D291BCA56000C0043 /* AddTransaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1616C304291BBF8C000C0043 /* Expenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1616C307291BBF8C000C0043 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1616C309291BBF8C000C0043 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1616C30B291BBF8C000C0043 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1616C30B291BBF8C000C0043 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		1616C30E291BBF8C000C0043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1616C310291BBF90000C0043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1616C313291BBF90000C0043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1616C315291BBF90000C0043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1616C31B291BC295000C0043 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		1616C31D291BCA56000C0043 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1616C31D291BCA56000C0043 /* AddTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +62,8 @@
 			children = (
 				1616C307291BBF8C000C0043 /* AppDelegate.swift */,
 				1616C309291BBF8C000C0043 /* SceneDelegate.swift */,
-				1616C30B291BBF8C000C0043 /* ViewController.swift */,
-				1616C31D291BCA56000C0043 /* DetailViewController.swift */,
+				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
+				1616C31D291BCA56000C0043 /* AddTransaction.swift */,
 				1616C31B291BC295000C0043 /* CustomTableViewCell.swift */,
 				1616C30D291BBF8C000C0043 /* Main.storyboard */,
 				1616C310291BBF90000C0043 /* Assets.xcassets */,
@@ -144,8 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1616C31E291BCA56000C0043 /* DetailViewController.swift in Sources */,
-				1616C30C291BBF8C000C0043 /* ViewController.swift in Sources */,
+				1616C31E291BCA56000C0043 /* AddTransaction.swift in Sources */,
+				1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */,
 				1616C308291BBF8C000C0043 /* AppDelegate.swift in Sources */,
 				1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */,
 				1616C30A291BBF8C000C0043 /* SceneDelegate.swift in Sources */,
