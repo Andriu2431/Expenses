@@ -14,12 +14,11 @@ class AddTransaction: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var plassOrMinus: UISegmentedControl!
     
-    var complition: ((ExpensesItem) -> ())?
     let dateFormater = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateFormater.dateFormat = "dd/MM/YY"
+        self.dateFormater.dateFormat = "dd/MM, HH:mm:ss" 
         self.costTextField.keyboardType = .numberPad
         self.datePicker.datePickerMode = .date
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -37,14 +36,7 @@ class AddTransaction: UIViewController {
                                                     cost: cost,
                                                     operation: String(plassOrMinus.selectedSegmentIndex),
                                                     date: dateFormater.string(from: datePicker.date),
-                                                    total: totalMoney) { result in
-            switch result {
-            case .success(let success):
-                self.complition?(success)
-            case .failure(let failure):
-                print(failure.localizedDescription)
-            }
-        }
+                                                    total: totalMoney)
         navigationController?.popViewController(animated: true)
     }
     

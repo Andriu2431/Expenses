@@ -6,26 +6,32 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var items = [ExpensesItem]()
+    private var listListener: ListenerRegistration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = false
         self.tableView.keyboardDismissMode = .onDrag
+        listListener = ListenerServise.shared.walletObserve(items: items, completion: { result in
+            switch result {
+            case .success(let success):
+                self.items = success.sorted(by: { $0.date > $1.date })
+                self.title = self.items.first?.total
+                self.tableView.reloadData()
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        })
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if case let addTransaction as AddTransaction = segue.destination, segue.identifier == "segue" {
-            addTransaction.complition = { [unowned self] item in
-                self.title = item.total
-                self.items.append(item)
-                self.tableView.reloadData()
-            }
-        }
+    deinit {
+        listListener?.remove()
     }
 }
 

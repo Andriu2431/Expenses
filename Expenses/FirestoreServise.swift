@@ -17,15 +17,12 @@ class FirestoreServise {
         return db.collection("wallet")
     }
     
-    func saveTransactionWith(name: String, cost: String, operation: String, date: String, total: String, completion: @escaping (Result<ExpensesItem, Error>) -> Void) {
-        
+    func saveTransactionWith(name: String, cost: String, operation: String, date: String, total: String) {
         let item = ExpensesItem(name: name, cost: cost, operation: operation, date: date, total: total)
         self.walletRef.document(UUID().uuidString).setData(item.representation) { error in
             if let error {
-                completion(.failure(error))
-            } else {
-                completion(.success(item))
-            }
+                print(error.localizedDescription)
+            } 
         }
     }
 }

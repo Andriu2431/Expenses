@@ -114,17 +114,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BQ-l6-YoB">
-                                <rect key="frame" x="168.5" y="727.5" width="77" height="34.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77" id="2fu-TL-k1m"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="save"/>
-                                <connections>
-                                    <action selector="saveButton:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="3No-9S-IfE"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="mOy-B8-iT2">
                                 <rect key="frame" x="82" y="159" width="250" height="435"/>
                                 <subviews>
@@ -154,14 +143,24 @@
                                     <constraint firstAttribute="width" constant="250" id="cAX-j9-hvq"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BQ-l6-YoB">
+                                <rect key="frame" x="169" y="783" width="77" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77" id="2fu-TL-k1m"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="3No-9S-IfE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQ5-SP-V11"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rQ5-SP-V11" firstAttribute="trailing" secondItem="mOy-B8-iT2" secondAttribute="trailing" constant="82" id="E1I-Ei-GAf"/>
+                            <constraint firstItem="mOy-B8-iT2" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="1Vy-t1-9jq"/>
                             <constraint firstItem="9BQ-l6-YoB" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="Z6u-vB-G1h"/>
-                            <constraint firstItem="rQ5-SP-V11" firstAttribute="bottom" secondItem="9BQ-l6-YoB" secondAttribute="bottom" constant="100" id="eLV-oj-ny5"/>
-                            <constraint firstItem="mOy-B8-iT2" firstAttribute="leading" secondItem="rQ5-SP-V11" secondAttribute="leading" constant="82" id="pKD-O1-3Ww"/>
+                            <constraint firstItem="rQ5-SP-V11" firstAttribute="bottom" secondItem="9BQ-l6-YoB" secondAttribute="bottom" constant="44.5" id="eLV-oj-ny5"/>
                             <constraint firstItem="mOy-B8-iT2" firstAttribute="top" secondItem="rQ5-SP-V11" secondAttribute="top" constant="67" id="zab-NX-Min"/>
                         </constraints>
                     </view>
