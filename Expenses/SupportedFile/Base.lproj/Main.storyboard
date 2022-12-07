@@ -144,7 +144,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BQ-l6-YoB">
-                                <rect key="frame" x="169" y="783" width="77" height="34.5"/>
+                                <rect key="frame" x="168.5" y="783" width="77" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77" id="2fu-TL-k1m"/>
                                 </constraints>

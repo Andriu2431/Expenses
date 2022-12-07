@@ -29,9 +29,11 @@ class ListenerServise {
                     guard !items.contains(item) else { return }
                     items.append(item)
                 case .modified:
-                    return
+                    guard let index = items.firstIndex(of: item) else { return }
+                    items[index] = item
                 case .removed:
-                    return
+                    guard let index = items.firstIndex(of: item) else { return }
+                    items.remove(at: index)
                 }
             }
             completion(.success(items))

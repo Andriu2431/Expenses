@@ -13,13 +13,15 @@ struct ExpensesItem: Hashable {
     var operation: String
     var date: String
     var total: String
+    var id: String
     
-    init(name: String, cost: String, operation: String, date: String, total: String) {
+    init(name: String, cost: String, operation: String, date: String, total: String, id: String) {
         self.name = name
         self.cost = cost
         self.operation = operation
         self.date = date
         self.total = total
+        self.id = id
     }
     
     init?(document: QueryDocumentSnapshot) {
@@ -28,13 +30,16 @@ struct ExpensesItem: Hashable {
               let cost = data["cost"] as? String,
               let operation = data["operation"] as? String,
               let date = data["date"] as? String,
-              let total = data["total"] as? String else { return nil }
+              let total = data["total"] as? String,
+              let id = data["id"] as? String
+        else { return nil }
         
         self.name = name
         self.cost = cost
         self.operation = operation
         self.date = date
         self.total = total
+        self.id = id
     }
     
     var representation: [String: Any] {
@@ -43,14 +48,11 @@ struct ExpensesItem: Hashable {
         rep["operation"] = operation
         rep["date"] = date
         rep["total"] = total
+        rep["id"] = id
         return rep
     }
     
     static func == (lhs: ExpensesItem, rhs: ExpensesItem) -> Bool {
-        if lhs.name == rhs.name, lhs.cost == rhs.cost, lhs.total == rhs.total, lhs.date == rhs.date {
-            return true
-        } else {
-            return false
-        }
+        return lhs.id == rhs.id
     }
 }

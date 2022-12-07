@@ -20,7 +20,7 @@ class AddTransaction: UIViewController {
         super.viewDidLoad()
         self.dateFormater.dateFormat = "dd/MM, HH:mm:ss" 
         self.costTextField.keyboardType = .numberPad
-        self.datePicker.datePickerMode = .date
+        self.datePicker.datePickerMode = .dateAndTime
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -50,7 +50,6 @@ class AddTransaction: UIViewController {
             guard totalMonay > price else { createAlert(message: "Ти як це хоч зробити? Нехватає грошей😩")
                 return nil
             }
-            
             totalMonay -= price
         }
         

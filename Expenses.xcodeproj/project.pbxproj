@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,21 +78,61 @@
 		1616C306291BBF8C000C0043 /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
-				1616C307291BBF8C000C0043 /* AppDelegate.swift */,
-				1616C309291BBF8C000C0043 /* SceneDelegate.swift */,
-				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
-				1616C31D291BCA56000C0043 /* AddTransaction.swift */,
-				1616C31B291BC295000C0043 /* CustomTableViewCell.swift */,
-				165021DD293E14FA003CEC30 /* FirestoreServise.swift */,
-				165021DF293E172D003CEC30 /* ExpensesItem.swift */,
-				165021E3293E319D003CEC30 /* ListenerServise.swift */,
-				1616C30D291BBF8C000C0043 /* Main.storyboard */,
-				1616C310291BBF90000C0043 /* Assets.xcassets */,
-				1616C312291BBF90000C0043 /* LaunchScreen.storyboard */,
+				16D88BD0294081D400E5C30A /* View Controllers */,
+				16D88BD12940820E00E5C30A /* Castom cell */,
+				16D88BD22940821800E5C30A /* Model */,
+				16D88BD32940822A00E5C30A /* FirebaseServicse */,
+				16D88BD42940824E00E5C30A /* SupportedFile */,
 				1616C315291BBF90000C0043 /* Info.plist */,
 				165021E1293E24AB003CEC30 /* GoogleService-Info.plist */,
 			);
 			path = Expenses;
+			sourceTree = "<group>";
+		};
+		16D88BD0294081D400E5C30A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
+				1616C31D291BCA56000C0043 /* AddTransaction.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		16D88BD12940820E00E5C30A /* Castom cell */ = {
+			isa = PBXGroup;
+			children = (
+				1616C31B291BC295000C0043 /* CustomTableViewCell.swift */,
+			);
+			path = "Castom cell";
+			sourceTree = "<group>";
+		};
+		16D88BD22940821800E5C30A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				165021DF293E172D003CEC30 /* ExpensesItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		16D88BD32940822A00E5C30A /* FirebaseServicse */ = {
+			isa = PBXGroup;
+			children = (
+				165021DD293E14FA003CEC30 /* FirestoreServise.swift */,
+				165021E3293E319D003CEC30 /* ListenerServise.swift */,
+			);
+			path = FirebaseServicse;
+			sourceTree = "<group>";
+		};
+		16D88BD42940824E00E5C30A /* SupportedFile */ = {
+			isa = PBXGroup;
+			children = (
+				1616C307291BBF8C000C0043 /* AppDelegate.swift */,
+				1616C309291BBF8C000C0043 /* SceneDelegate.swift */,
+				1616C30D291BBF8C000C0043 /* Main.storyboard */,
+				1616C310291BBF90000C0043 /* Assets.xcassets */,
+				1616C312291BBF90000C0043 /* LaunchScreen.storyboard */,
+			);
+			path = SupportedFile;
 			sourceTree = "<group>";
 		};
 		17AF5507E9DA2976C2552D7C /* Pods */ = {
@@ -150,7 +190,7 @@
 				};
 			};
 			buildConfigurationList = 1616C2FF291BBF8C000C0043 /* Build configuration list for PBXProject "Expenses" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -392,6 +432,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,6 +462,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

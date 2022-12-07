@@ -66,9 +66,18 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        guard var lastItem = items.first, let lastItemTotal = Int(lastItem.total), let itemCost = Int(item.cost) else { return }
+        switch item.operation {
+        case "0":
+            lastItem.total = String(lastItemTotal - itemCost)
+        default:
+            lastItem.total = String(lastItemTotal + itemCost)
+        }
         
-        items.remove(at: indexPath.row)
-        tableView.reloadData()
+        FirestoreServise.shared.updateTransaction(item: lastItem)
+        FirestoreServise.shared.deleteTransaction(item: item)
+        self.tableView.reloadData()
     }
 }
 
