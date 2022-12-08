@@ -17,46 +17,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaW-Ci-Px9">
-                                <rect key="frame" x="144" y="777" width="126" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Продовжити"/>
-                                <connections>
-                                    <segue destination="l4F-1j-6B6" kind="show" identifier="" id="Yvd-Hz-qci"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-Ji-dQg">
-                                <rect key="frame" x="122" y="706" width="170" height="35"/>
+                                <rect key="frame" x="122" y="773.5" width="170" height="34.5"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Touch ID or Face Id"/>
                                 <connections>
                                     <action selector="useFaceIdTapped" destination="knW-RY-lhZ" eventType="touchUpInside" id="nTx-kw-lKC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Використайте біометрію або уведіть пароль" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyK-GE-pRf">
+                                <rect key="frame" x="57" y="87" width="300" height="107.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="1pD-pb-bXg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yk3-SH-MUS">
+                                <rect key="frame" x="132" y="317" width="150" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="HMr-3V-nPB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yIi-tN-UkK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="LaW-Ci-Px9" firstAttribute="top" secondItem="VAT-Ji-dQg" secondAttribute="bottom" constant="36" id="9Z9-f8-t2p"/>
-                            <constraint firstItem="LaW-Ci-Px9" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="C13-AH-ViU"/>
+                            <constraint firstItem="Yk3-SH-MUS" firstAttribute="top" secondItem="qyK-GE-pRf" secondAttribute="bottom" constant="122.5" id="G5Y-HW-qpk"/>
                             <constraint firstItem="VAT-Ji-dQg" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IIW-BB-p9r"/>
-                            <constraint firstItem="yIi-tN-UkK" firstAttribute="bottom" secondItem="LaW-Ci-Px9" secondAttribute="bottom" constant="50" id="orc-Ek-Vjr"/>
+                            <constraint firstItem="qyK-GE-pRf" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IYT-Hs-r6O"/>
+                            <constraint firstItem="Yk3-SH-MUS" firstAttribute="centerX" secondItem="qyK-GE-pRf" secondAttribute="centerX" id="Qic-eL-jEG"/>
+                            <constraint firstItem="qyK-GE-pRf" firstAttribute="top" secondItem="yIi-tN-UkK" secondAttribute="top" constant="39" id="kF6-pW-pGU"/>
+                            <constraint firstItem="yIi-tN-UkK" firstAttribute="bottom" secondItem="VAT-Ji-dQg" secondAttribute="bottom" constant="54" id="x1l-9t-O7N"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hsm-gU-f2H"/>
                     <connections>
-                        <outlet property="nextScreen" destination="LaW-Ci-Px9" id="ZA7-pJ-Ewo"/>
+                        <outlet property="passwordTextField" destination="Yk3-SH-MUS" id="I5f-tj-Pk5"/>
                         <outlet property="touchOrFaceID" destination="VAT-Ji-dQg" id="Nrz-il-aR9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyO-as-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="135"/>
+            <point key="canvasLocation" x="995.65217391304361" y="134.59821428571428"/>
         </scene>
         <!--0-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ListViewController" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestPresent" id="BYZ-38-t0r" customClass="ListViewController" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,13 +87,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iOs-kW-xxL">
                                                     <rect key="frame" x="20" y="11.5" width="46.5" height="57"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Куда?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPM-Cg-LdI">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Куда?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPM-Cg-LdI">
                                                             <rect key="frame" x="0.0" y="0.0" width="46.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9X-Gf-K5g">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9X-Gf-K5g">
                                                             <rect key="frame" x="0.0" y="36.5" width="36" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -215,7 +227,7 @@
         <!--Navigation Controller-->
         <scene sceneID="POm-K1-5mE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overCurrentContext" id="l4F-1j-6B6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationListVC" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overCurrentContext" id="l4F-1j-6B6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="hD6-D3-SdL"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -234,6 +246,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
