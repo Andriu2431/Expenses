@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160E94D02941EC6B00838B21 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160E94CF2941EC6B00838B21 /* AuthViewController.swift */; };
 		1616C308291BBF8C000C0043 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C307291BBF8C000C0043 /* AppDelegate.swift */; };
 		1616C30A291BBF8C000C0043 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C309291BBF8C000C0043 /* SceneDelegate.swift */; };
 		1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C30B291BBF8C000C0043 /* ListViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160E94CF2941EC6B00838B21 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		1616C304291BBF8C000C0043 /* Expenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1616C307291BBF8C000C0043 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1616C309291BBF8C000C0043 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
 				1616C31D291BCA56000C0043 /* AddTransaction.swift */,
+				160E94CF2941EC6B00838B21 /* AuthViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				1616C31E291BCA56000C0043 /* AddTransaction.swift in Sources */,
 				1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */,
 				165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */,
+				160E94D02941EC6B00838B21 /* AuthViewController.swift in Sources */,
 				1616C308291BBF8C000C0043 /* AppDelegate.swift in Sources */,
 				1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */,
 				1616C30A291BBF8C000C0043 /* SceneDelegate.swift in Sources */,
@@ -427,12 +431,13 @@
 				DEVELOPMENT_TEAM = 96Z9K772Z9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Expenses/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,12 +462,13 @@
 				DEVELOPMENT_TEAM = 96Z9K772Z9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Expenses/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
