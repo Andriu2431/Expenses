@@ -53,7 +53,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         switch item.operation {
         case "0":
             cell.cost.text = "+\(item.cost) грн"
-            cell.cost.textColor = .green
+            cell.cost.textColor = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
         default:
             cell.cost.text = "-\(item.cost) грн"
             cell.cost.textColor = .red
