@@ -17,9 +17,9 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
-        self.tableView.allowsSelection = false
-        self.tableView.keyboardDismissMode = .onDrag
+        dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
+        tableView.allowsSelection = false
+        tableView.keyboardDismissMode = .onDrag
         listListener = ListenerServise.shared.walletObserve(items: items, completion: { [self] result in
             switch result {
             case .success(let success):

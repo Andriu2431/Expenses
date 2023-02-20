@@ -18,12 +18,21 @@ class AddTransactionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
-//        self.datePicker.minimumDate = .now
-        self.costTextField.keyboardType = .numberPad
-        self.datePicker.datePickerMode = .dateAndTime
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
+        costTextField.keyboardType = .numberPad
+        datePicker.datePickerMode = .dateAndTime
+        plassOrMinus.selectedSegmentIndex = 1
+        changeColorSegmentedControl()
+        plassOrMinus.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+    }
+    
+   @objc private func changeColorSegmentedControl() {
+       if plassOrMinus.selectedSegmentIndex == 0 {
+           plassOrMinus.selectedSegmentTintColor = .green
+       } else {
+           plassOrMinus.selectedSegmentTintColor = .red
+       }
     }
     
     @objc func dismissKeyboard() {

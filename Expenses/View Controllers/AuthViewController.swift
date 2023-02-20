@@ -31,14 +31,16 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationListVC = self.storyboard?.instantiateViewController(withIdentifier: "NavigationListVC")
-        
         passwordTextField.delegate = self
         passwordTextField.keyboardType = .numberPad
         passwordTextField.backgroundColor = .clear
-        
         gradientLayer = CAGradientLayer()
-
         biometricLogin()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func useFaceIdTapped() {
