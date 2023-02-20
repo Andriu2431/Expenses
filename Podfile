@@ -8,5 +8,6 @@ target 'Expenses' do
   # Pods for Expenses
 pod 'FirebaseFirestore'
 pod 'Firebase'
+pod 'KeychainSwift', '~> 20.0'
 
 end

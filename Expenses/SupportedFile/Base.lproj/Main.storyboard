@@ -18,10 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-Ji-dQg">
-                                <rect key="frame" x="122" y="773.5" width="170" height="34.5"/>
-                                <color key="tintColor" systemColor="labelColor"/>
+                                <rect key="frame" x="101" y="727" width="212" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Touch ID or Face Id"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Використати біометрію"/>
                                 <connections>
                                     <action selector="useFaceIdTapped" destination="knW-RY-lhZ" eventType="touchUpInside" id="nTx-kw-lKC"/>
                                 </connections>
@@ -61,6 +60,14 @@
                                     <constraint firstAttribute="height" constant="1" id="xZu-vz-Xn9"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP5-BW-Dxc">
+                                <rect key="frame" x="100" y="777" width="214" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Створити новий пароль"/>
+                                <connections>
+                                    <action selector="newPasswordButton:" destination="knW-RY-lhZ" eventType="touchUpInside" id="BH0-wp-Bon"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yIi-tN-UkK"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
@@ -68,13 +75,15 @@
                             <constraint firstItem="snT-c2-UIy" firstAttribute="top" secondItem="qyK-GE-pRf" secondAttribute="bottom" constant="150" id="4Z1-HA-sCc"/>
                             <constraint firstItem="VAT-Ji-dQg" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IIW-BB-p9r"/>
                             <constraint firstItem="qyK-GE-pRf" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IYT-Hs-r6O"/>
+                            <constraint firstItem="yIi-tN-UkK" firstAttribute="bottom" secondItem="TP5-BW-Dxc" secondAttribute="bottom" constant="50" id="JAB-ak-xmu"/>
+                            <constraint firstItem="TP5-BW-Dxc" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="LI6-fq-OWd"/>
                             <constraint firstItem="Yk3-SH-MUS" firstAttribute="top" secondItem="snT-c2-UIy" secondAttribute="bottom" constant="10" id="N0b-Xk-3wH"/>
                             <constraint firstItem="snT-c2-UIy" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="O1p-vP-vqM"/>
+                            <constraint firstItem="TP5-BW-Dxc" firstAttribute="top" secondItem="VAT-Ji-dQg" secondAttribute="bottom" constant="15" id="YOh-K7-TmQ"/>
                             <constraint firstItem="Yk3-SH-MUS" firstAttribute="leading" secondItem="snT-c2-UIy" secondAttribute="leading" id="gIC-yz-B6L"/>
                             <constraint firstItem="h0z-Ej-Ft2" firstAttribute="top" secondItem="Yk3-SH-MUS" secondAttribute="bottom" constant="4" id="gmL-vZ-c8y"/>
                             <constraint firstItem="qyK-GE-pRf" firstAttribute="top" secondItem="yIi-tN-UkK" secondAttribute="top" constant="39" id="kF6-pW-pGU"/>
                             <constraint firstItem="h0z-Ej-Ft2" firstAttribute="leading" secondItem="Yk3-SH-MUS" secondAttribute="leading" id="tbf-N7-Qky"/>
-                            <constraint firstItem="yIi-tN-UkK" firstAttribute="bottom" secondItem="VAT-Ji-dQg" secondAttribute="bottom" constant="54" id="x1l-9t-O7N"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hsm-gU-f2H"/>
@@ -337,9 +346,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -74,6 +74,6 @@ class AddTransactionVC: UIViewController {
         let alert = UIAlertController(title: "Стоп!", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Піду зароблю)", style: .default)
         alert.addAction(ok)
-        present(alert, animated: true)
+        self.present(alert, animated: true)
     }
 }

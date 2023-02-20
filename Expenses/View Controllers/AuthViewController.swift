@@ -7,6 +7,7 @@
 
 import UIKit
 import LocalAuthentication
+import KeychainSwift
 
 class AuthViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var navigationListVC: UIViewController!
+    let keychain = KeychainSwift()
     
     private var gradientLayer: CAGradientLayer! {
         didSet {
@@ -43,10 +45,6 @@ class AuthViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func useFaceIdTapped() {
-        biometricLogin()
-    }
-    
     private func biometricLogin() {
         let context = LAContext()
         let reason = "Please authorize with Face ID or Touch ID"
@@ -63,11 +61,30 @@ class AuthViewController: UIViewController {
             }
         }
     }
+    
+    private func createNewPasswordAlert() {
+        let alert = UIAlertController(title: "Впишіть новий пароль!", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Зберегти", style: .default) { [weak self] action in
+            guard let text = alert.textFields?.first?.text else { return }
+            self?.keychain.set("\(text)", forKey: "password")
+        }
+        alert.addTextField()
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    @IBAction func useFaceIdTapped() {
+        biometricLogin()
+    }
+    
+    @IBAction func newPasswordButton(_ sender: Any) {
+        createNewPasswordAlert()
+    }
 }
 
 extension AuthViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard textField.text == "2431" else { return }
+        guard textField.text == keychain.get("password") else { return }
         self.present(navigationListVC, animated: true)
     }
 }
