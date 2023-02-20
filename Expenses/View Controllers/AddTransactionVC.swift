@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddTransaction: UIViewController {
+class AddTransactionVC: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var costTextField: UITextField!
@@ -18,7 +18,8 @@ class AddTransaction: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateFormater.dateFormat = "dd/MM, HH:mm:ss" 
+        self.dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
+//        self.datePicker.minimumDate = .now
         self.costTextField.keyboardType = .numberPad
         self.datePicker.datePickerMode = .dateAndTime
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -30,7 +31,10 @@ class AddTransaction: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        guard let name = nameTextField.text, let cost = costTextField.text, let totalMoney = returnTotalMoney(price: Int(cost) ?? 0), !name.isEmpty, !cost.isEmpty else { return }
+        guard let name = nameTextField.text, let cost = costTextField.text, let costInt = Int(cost), let totalMoney = returnTotalMoney(price: costInt), !name.isEmpty, !cost.isEmpty else {
+            self.createAlert(message: "Введіть коректну суму!")
+            return
+        }
         
         FirestoreServise.shared.saveTransactionWith(name: name,
                                                     cost: cost,
@@ -47,7 +51,8 @@ class AddTransaction: UIViewController {
         case 0:
             totalMonay += price
         default:
-            guard totalMonay > price else { createAlert(message: "Ти як це хоч зробити? Нехватає грошей😩")
+            guard totalMonay > price else {
+                self.createAlert(message: "Ти як це хоч зробити? Нехватає грошей😩")
                 return nil
             }
             totalMonay -= price

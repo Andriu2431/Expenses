@@ -13,15 +13,19 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var items = [ExpensesItem]()
     private var listListener: ListenerRegistration?
+    private var dateFormater = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
         self.tableView.allowsSelection = false
         self.tableView.keyboardDismissMode = .onDrag
-        listListener = ListenerServise.shared.walletObserve(items: items, completion: { result in
+        listListener = ListenerServise.shared.walletObserve(items: items, completion: { [self] result in
             switch result {
             case .success(let success):
-                self.items = success.sorted(by: { $0.date > $1.date })
+                self.items = success.sorted(by: {
+                    self.dateFormater.date(from: $0.date)! > self.dateFormater.date(from: $1.date)!
+                })
                 self.title = self.items.first?.total
                 self.tableView.reloadData()
             case .failure(let failure):

@@ -15,7 +15,7 @@
 		1616C311291BBF90000C0043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1616C310291BBF90000C0043 /* Assets.xcassets */; };
 		1616C314291BBF90000C0043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1616C312291BBF90000C0043 /* LaunchScreen.storyboard */; };
 		1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31B291BC295000C0043 /* CustomTableViewCell.swift */; };
-		1616C31E291BCA56000C0043 /* AddTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31D291BCA56000C0043 /* AddTransaction.swift */; };
+		1616C31E291BCA56000C0043 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31D291BCA56000C0043 /* AddTransactionVC.swift */; };
 		16375777293F3A9100596A30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 16375776293F3A9100596A30 /* .gitignore */; };
 		165021DE293E14FA003CEC30 /* FirestoreServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021DD293E14FA003CEC30 /* FirestoreServise.swift */; };
 		165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021DF293E172D003CEC30 /* ExpensesItem.swift */; };
@@ -35,7 +35,7 @@
 		1616C313291BBF90000C0043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1616C315291BBF90000C0043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1616C31B291BC295000C0043 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		1616C31D291BCA56000C0043 /* AddTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransaction.swift; sourceTree = "<group>"; };
+		1616C31D291BCA56000C0043 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
 		16375776293F3A9100596A30 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		165021DD293E14FA003CEC30 /* FirestoreServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServise.swift; sourceTree = "<group>"; };
 		165021DF293E172D003CEC30 /* ExpensesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesItem.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
-				1616C31D291BCA56000C0043 /* AddTransaction.swift */,
+				1616C31D291BCA56000C0043 /* AddTransactionVC.swift */,
 				160E94CF2941EC6B00838B21 /* AuthViewController.swift */,
 			);
 			path = "View Controllers";
@@ -272,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1616C31E291BCA56000C0043 /* AddTransaction.swift in Sources */,
+				1616C31E291BCA56000C0043 /* AddTransactionVC.swift in Sources */,
 				1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */,
 				165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */,
 				160E94D02941EC6B00838B21 /* AuthViewController.swift in Sources */,

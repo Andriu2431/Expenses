@@ -23,23 +23,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DAC1BB99-5C92-4E71-9AA5-E1A4C28556E6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Expenses/View Controllers/ListViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8D246372-3933-42D3-92A3-A156E8C0F2AA"
+            uuid = "54A490F6-C974-4DF0-BDFA-336237B65977"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -55,15 +39,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "184009F8-24B4-49D2-A85A-28FFB1F764AE"
+            uuid = "CACC0826-B22D-4DF5-98EB-3350F6AE1543"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Expenses/View Controllers/ListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -71,15 +55,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "81E8EE66-3537-4AEF-A9E2-7A07BF89585B"
+            uuid = "288DE49C-B40E-4DB9-AF1C-CCD08EF9F1C8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Expenses/View Controllers/ListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -87,111 +71,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0B0FB78A-3D23-4021-94A0-87F43698491F"
+            uuid = "126215FA-916C-401B-A27B-6283F8E24884"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Expenses/View Controllers/ListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5F9EB1E2-F56F-4838-8E8E-3932B6FCA772"
+            uuid = "398130A4-0222-413D-B49E-4F6BB588F9AB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Expenses/View Controllers/AddTransaction.swift"
+            filePath = "Expenses/FirebaseServicse/ListenerServise.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "returnTotalMoney(price:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "walletObserve(items:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2B013D51-9C9B-4F4B-BC27-5348699E93BB"
+            uuid = "533630FE-040F-492A-B73B-974664F9A230"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Expenses/View Controllers/AddTransaction.swift"
+            filePath = "Expenses/View Controllers/ListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "saveButton(_:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2B013D51-9C9B-4F4B-BC27-5348699E93BB - 76478d0e84ec8e16"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Expenses.AddTransaction.saveButton(Any) -&gt; ()"
-                  moduleName = "Expenses"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrii.malyk/Desktop/Expenses/Expenses/View%20Controllers/AddTransaction.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "212">
-               </Location>
-               <Location
-                  uuid = "2B013D51-9C9B-4F4B-BC27-5348699E93BB - 76478d0e84ec8e16"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Expenses.AddTransaction.saveButton(Any) -&gt; ()"
-                  moduleName = "Expenses"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrii.malyk/Desktop/Expenses/Expenses/View%20Controllers/AddTransaction.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "420">
-               </Location>
-               <Location
-                  uuid = "2B013D51-9C9B-4F4B-BC27-5348699E93BB - 76478d0e84ec8e16"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Expenses.AddTransaction.saveButton(Any) -&gt; ()"
-                  moduleName = "Expenses"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrii.malyk/Desktop/Expenses/Expenses/View%20Controllers/AddTransaction.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "908">
-               </Location>
-               <Location
-                  uuid = "2B013D51-9C9B-4F4B-BC27-5348699E93BB - 76478d0e84ec8e16"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Expenses.AddTransaction.saveButton(Any) -&gt; ()"
-                  moduleName = "Expenses"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrii.malyk/Desktop/Expenses/Expenses/View%20Controllers/AddTransaction.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "1352">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
