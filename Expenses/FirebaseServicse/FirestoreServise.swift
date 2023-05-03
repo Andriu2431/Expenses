@@ -18,7 +18,7 @@ class FirestoreServise {
     }
     
     func saveTransactionWith(name: String, cost: String, operation: String, date: String, total: String) {
-        let item = ExpensesItem(name: name, cost: cost, operation: operation, date: date, total: total, id: name+cost+total)
+        let item = ExpensesItem(description: name, sumTransaction: cost, operation: operation, dateTransaction: date, balance: total, id: UUID().uuidString)
         self.walletRef.document(item.id).setData(item.representation) { error in
             if let error {
                 print(error.localizedDescription)
@@ -35,7 +35,7 @@ class FirestoreServise {
     }
     
     func updateTransaction(item: ExpensesItem) {
-        walletRef.document(item.id).updateData(["total": item.total]) { error in
+        walletRef.document(item.id).updateData(["total": item.balance]) { error in
             if let error {
                 print(error.localizedDescription)
             }

@@ -24,9 +24,9 @@ class ListViewController: UIViewController {
             switch result {
             case .success(let success):
                 self.items = success.sorted(by: {
-                    self.dateFormater.date(from: $0.date)! > self.dateFormater.date(from: $1.date)!
+                    self.dateFormater.date(from: $0.dateTransaction)! > self.dateFormater.date(from: $1.dateTransaction)!
                 })
-                self.title = self.items.first?.total
+                self.title = self.items.first?.balance
                 self.tableView.reloadData()
             case .failure(let failure):
                 print(failure.localizedDescription)
@@ -52,14 +52,14 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         let item = items[indexPath.row]
-        cell.name.text = item.name
-        cell.dateLabel.text = item.date
+        cell.name.text = item.description
+        cell.dateLabel.text = item.dateTransaction
         switch item.operation {
         case "0":
-            cell.cost.text = "+\(item.cost) грн"
+            cell.cost.text = "+\(item.sumTransaction) грн"
             cell.cost.textColor = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
         default:
-            cell.cost.text = "-\(item.cost) грн"
+            cell.cost.text = "-\(item.sumTransaction) грн"
             cell.cost.textColor = .red
         }
         return cell
@@ -71,12 +71,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        guard var lastItem = items.first, let lastItemTotal = Int(lastItem.total), let itemCost = Int(item.cost) else { return }
+        guard var lastItem = items.first, let lastItemTotal = Int(lastItem.balance), let itemCost = Int(item.sumTransaction) else { return }
         switch item.operation {
         case "0":
-            lastItem.total = String(lastItemTotal - itemCost)
+            lastItem.balance = String(lastItemTotal - itemCost)
         default:
-            lastItem.total = String(lastItemTotal + itemCost)
+            lastItem.balance = String(lastItemTotal + itemCost)
         }
         
         FirestoreServise.shared.updateTransaction(item: lastItem)

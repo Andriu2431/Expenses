@@ -8,19 +8,19 @@
 import FirebaseFirestore
 
 struct ExpensesItem: Hashable {
-    var name: String
-    var cost: String
+    var description: String
+    var sumTransaction: String
     var operation: String
-    var date: String
-    var total: String
+    var dateTransaction: String
+    var balance: String
     var id: String
     
-    init(name: String, cost: String, operation: String, date: String, total: String, id: String) {
-        self.name = name
-        self.cost = cost
+    init(description: String, sumTransaction: String, operation: String, dateTransaction: String, balance: String, id: String) {
+        self.description = description
+        self.sumTransaction = sumTransaction
         self.operation = operation
-        self.date = date
-        self.total = total
+        self.dateTransaction = dateTransaction
+        self.balance = balance
         self.id = id
     }
     
@@ -34,20 +34,20 @@ struct ExpensesItem: Hashable {
               let id = data["id"] as? String
         else { return nil }
         
-        self.name = name
-        self.cost = cost
+        self.description = name
+        self.sumTransaction = cost
         self.operation = operation
-        self.date = date
-        self.total = total
+        self.dateTransaction = date
+        self.balance = total
         self.id = id
     }
     
     var representation: [String: Any] {
-        var rep = ["name": name]
-        rep["cost"] = cost
+        var rep = ["name": description]
+        rep["cost"] = sumTransaction
         rep["operation"] = operation
-        rep["date"] = date
-        rep["total"] = total
+        rep["date"] = dateTransaction
+        rep["total"] = balance
         rep["id"] = id
         return rep
     }
