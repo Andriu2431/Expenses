@@ -17,21 +17,23 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
+        dateFormater.dateFormat = "dd/MM/yyyy"
         tableView.allowsSelection = false
         tableView.keyboardDismissMode = .onDrag
-        listListener = ListenerServise.shared.walletObserve(items: items, completion: { [self] result in
-            switch result {
-            case .success(let success):
-                self.items = success.sorted(by: {
-                    self.dateFormater.date(from: $0.dateTransaction)! > self.dateFormater.date(from: $1.dateTransaction)!
-                })
-                self.title = self.items.first?.balance
-                self.tableView.reloadData()
-            case .failure(let failure):
-                print(failure.localizedDescription)
-            }
+        listListener = ListenerServise.shared.walletObserve(items: items, completion: { [weak self] result in
+            self?.updateUI(result)
         })
+    }
+    
+    private func updateUI(_ result: Result<[ExpensesItem], Error>) {
+        switch result {
+        case .success(let success):
+            items = success.sorted(by: { $0.dateTransaction > $1.dateTransaction })
+            title = String(items.first?.balance ?? 0)
+            tableView.reloadData()
+        case .failure(let failure):
+            print(failure.localizedDescription)
+        }
     }
     
     deinit {
@@ -53,9 +55,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         let item = items[indexPath.row]
         cell.name.text = item.description
-        cell.dateLabel.text = item.dateTransaction
+        cell.dateLabel.text = dateFormater.string(from: item.dateTransaction)
         switch item.operation {
-        case "0":
+        case 0:
             cell.cost.text = "+\(item.sumTransaction) грн"
             cell.cost.textColor = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
         default:
@@ -71,12 +73,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        guard var lastItem = items.first, let lastItemTotal = Int(lastItem.balance), let itemCost = Int(item.sumTransaction) else { return }
+        guard var lastItem = items.first else { return }
         switch item.operation {
-        case "0":
-            lastItem.balance = String(lastItemTotal - itemCost)
+        case 0:
+            lastItem.balance = lastItem.balance - item.sumTransaction
         default:
-            lastItem.balance = String(lastItemTotal + itemCost)
+            lastItem.balance = lastItem.balance + item.sumTransaction
         }
         
         FirestoreServise.shared.updateTransaction(item: lastItem)

@@ -9,13 +9,13 @@ import FirebaseFirestore
 
 struct ExpensesItem: Hashable {
     var description: String
-    var sumTransaction: String
-    var operation: String
-    var dateTransaction: String
-    var balance: String
+    var sumTransaction: Int
+    var operation: Int
+    var dateTransaction: Date
+    var balance: Int
     var id: String
     
-    init(description: String, sumTransaction: String, operation: String, dateTransaction: String, balance: String, id: String) {
+    init(description: String, sumTransaction: Int, operation: Int, dateTransaction: Date, balance: Int, id: String) {
         self.description = description
         self.sumTransaction = sumTransaction
         self.operation = operation
@@ -26,29 +26,30 @@ struct ExpensesItem: Hashable {
     
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
-        guard let name = data["name"] as? String,
-              let cost = data["cost"] as? String,
-              let operation = data["operation"] as? String,
-              let date = data["date"] as? String,
-              let total = data["total"] as? String,
-              let id = data["id"] as? String
+        guard let description = data["description"] as? String,
+              let sumTransaction = data["sumTransaction"] as? Int,
+              let operation = data["operation"] as? Int,
+              let dateTransaction = data["dateTransaction"] as? Timestamp,
+              let balance = data["balance"] as? Int,
+              let id = data["uid"] as? String
         else { return nil }
         
-        self.description = name
-        self.sumTransaction = cost
+        self.description = description
+        self.sumTransaction = sumTransaction
         self.operation = operation
-        self.dateTransaction = date
-        self.balance = total
+        self.dateTransaction = dateTransaction.dateValue()
+        self.balance = balance
         self.id = id
     }
     
     var representation: [String: Any] {
-        var rep = ["name": description]
-        rep["cost"] = sumTransaction
+        var rep = [String: Any]()
+        rep["description"] = description
+        rep["sumTransaction"] = sumTransaction
         rep["operation"] = operation
-        rep["date"] = dateTransaction
-        rep["total"] = balance
-        rep["id"] = id
+        rep["dateTransaction"] = dateTransaction
+        rep["balance"] = balance
+        rep["uid"] = id
         return rep
     }
     

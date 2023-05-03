@@ -14,11 +14,8 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var plassOrMinus: UISegmentedControl!
     
-    let dateFormater = DateFormatter()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormater.dateFormat = "dd/MM/yyyy, HH:mm:ss"
         costTextField.keyboardType = .numberPad
         datePicker.datePickerMode = .dateAndTime
         plassOrMinus.selectedSegmentIndex = 1
@@ -40,34 +37,37 @@ class AddTransactionVC: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        guard let name = nameTextField.text, let cost = costTextField.text, let costInt = Int(cost), let totalMoney = returnTotalMoney(price: costInt), !name.isEmpty, !cost.isEmpty else {
+        guard let description = nameTextField.text,
+              let sumTransaction = Int(costTextField.text ?? ""),
+              let balance = balanceAfterTransaction(sumTransaction),
+              !description.isEmpty else {
             self.createAlert(message: "Введіть коректну суму!")
             return
         }
         
-        FirestoreServise.shared.saveTransactionWith(name: name,
-                                                    cost: cost,
-                                                    operation: String(plassOrMinus.selectedSegmentIndex),
-                                                    date: dateFormater.string(from: datePicker.date),
-                                                    total: totalMoney)
+        FirestoreServise.shared.saveTransactionWith(description: description,
+                                                    sum: sumTransaction,
+                                                    operation: plassOrMinus.selectedSegmentIndex,
+                                                    date: datePicker.date,
+                                                    balance: balance)
         navigationController?.popViewController(animated: true)
     }
     
-    private func returnTotalMoney(price: Int) -> String? {
-        guard var totalMonay = Int(navigationController?.title ?? "0") else { return nil }
+    private func balanceAfterTransaction(_ sum: Int) -> Int? {
+        guard var curentBalance = Int(navigationController?.title ?? "0") else { return nil }
         
         switch plassOrMinus.selectedSegmentIndex {
         case 0:
-            totalMonay += price
+            curentBalance += sum
         default:
-            guard totalMonay > price else {
+            guard curentBalance > sum else {
                 self.createAlert(message: "Ти як це хоч зробити? Нехватає грошей😩")
                 return nil
             }
-            totalMonay -= price
+            curentBalance -= sum
         }
         
-        return String(totalMonay)
+        return curentBalance
     }
     
     private func createAlert(message: String) {
