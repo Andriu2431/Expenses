@@ -29,11 +29,22 @@ class ListViewController: UIViewController {
         switch result {
         case .success(let success):
             items = success.sorted(by: { $0.dateTransaction > $1.dateTransaction })
-            title = String(items.first?.balance ?? 0)
+            title = currentBalanceCalculation(items: items)
             tableView.reloadData()
         case .failure(let failure):
             print(failure.localizedDescription)
         }
+    }
+    
+    private func currentBalanceCalculation(items: [ExpensesItem]) -> String {
+        var profit: [Int] = []
+        var costs: [Int] = []
+        
+        items.forEach { item in
+            item.operation == 0 ? profit.append(item.sumTransaction) : costs.append(item.sumTransaction)
+        }
+
+        return String(profit.reduce(0, +) - costs.reduce(0, +))
     }
     
     deinit {
@@ -73,15 +84,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        guard var lastItem = items.first else { return }
-        switch item.operation {
-        case 0:
-            lastItem.balance = lastItem.balance - item.sumTransaction
-        default:
-            lastItem.balance = lastItem.balance + item.sumTransaction
-        }
-        
-        FirestoreServise.shared.updateTransaction(item: lastItem)
         FirestoreServise.shared.deleteTransaction(item: item)
         self.tableView.reloadData()
     }

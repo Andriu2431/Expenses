@@ -17,7 +17,7 @@ class AddTransactionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         costTextField.keyboardType = .numberPad
-        datePicker.datePickerMode = .dateAndTime
+        datePicker.datePickerMode = .date
         plassOrMinus.selectedSegmentIndex = 1
         changeColorSegmentedControl()
         plassOrMinus.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
@@ -39,7 +39,6 @@ class AddTransactionVC: UIViewController {
     @IBAction func saveButton(_ sender: Any) {
         guard let description = nameTextField.text,
               let sumTransaction = Int(costTextField.text ?? ""),
-              let balance = balanceAfterTransaction(sumTransaction),
               !description.isEmpty else {
             self.createAlert(message: "Введіть коректну суму!")
             return
@@ -48,31 +47,13 @@ class AddTransactionVC: UIViewController {
         FirestoreServise.shared.saveTransactionWith(description: description,
                                                     sum: sumTransaction,
                                                     operation: plassOrMinus.selectedSegmentIndex,
-                                                    date: datePicker.date,
-                                                    balance: balance)
+                                                    date: datePicker.date)
         navigationController?.popViewController(animated: true)
     }
     
-    private func balanceAfterTransaction(_ sum: Int) -> Int? {
-        guard var curentBalance = Int(navigationController?.title ?? "0") else { return nil }
-        
-        switch plassOrMinus.selectedSegmentIndex {
-        case 0:
-            curentBalance += sum
-        default:
-            guard curentBalance > sum else {
-                self.createAlert(message: "Ти як це хоч зробити? Нехватає грошей😩")
-                return nil
-            }
-            curentBalance -= sum
-        }
-        
-        return curentBalance
-    }
-    
-    private func createAlert(message: String) {
+    private func createAlert(message: String, title: String = "Ok") {
         let alert = UIAlertController(title: "Стоп!", message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Піду зароблю)", style: .default)
+        let ok = UIAlertAction(title: title, style: .default)
         alert.addAction(ok)
         self.present(alert, animated: true)
     }

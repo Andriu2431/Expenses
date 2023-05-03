@@ -292,10 +292,10 @@
                                 </constraints>
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="OtH-pF-bA0">
-                                <rect key="frame" x="82" y="382" width="250" height="216"/>
+                                <rect key="frame" x="47" y="382" width="320" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="1ac-hD-Sux"/>
-                                    <constraint firstAttribute="width" constant="250" id="lX8-IG-GiW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="lX8-IG-GiW"/>
                                 </constraints>
                                 <locale key="locale" localeIdentifier="uk"/>
                             </datePicker>
@@ -304,12 +304,11 @@
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstItem="5jd-vl-I46" firstAttribute="top" secondItem="rQ5-SP-V11" secondAttribute="top" constant="32" id="8nd-2i-yvp"/>
+                            <constraint firstItem="OtH-pF-bA0" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="N0D-Nx-fgL"/>
                             <constraint firstItem="5jd-vl-I46" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="N3a-Yg-aWW"/>
-                            <constraint firstItem="rQ5-SP-V11" firstAttribute="trailing" secondItem="OtH-pF-bA0" secondAttribute="trailing" constant="82" id="VqT-Pj-Wip"/>
                             <constraint firstItem="OtH-pF-bA0" firstAttribute="top" secondItem="5jd-vl-I46" secondAttribute="bottom" constant="8" id="YaZ-2F-CVw"/>
                             <constraint firstItem="9BQ-l6-YoB" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="Z6u-vB-G1h"/>
                             <constraint firstItem="rQ5-SP-V11" firstAttribute="bottom" secondItem="9BQ-l6-YoB" secondAttribute="bottom" constant="44.5" id="eLV-oj-ny5"/>
-                            <constraint firstItem="OtH-pF-bA0" firstAttribute="leading" secondItem="rQ5-SP-V11" secondAttribute="leading" constant="82" id="f6L-2C-UZL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Ha-ez-krG"/>

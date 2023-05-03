@@ -12,15 +12,13 @@ struct ExpensesItem: Hashable {
     var sumTransaction: Int
     var operation: Int
     var dateTransaction: Date
-    var balance: Int
     var id: String
     
-    init(description: String, sumTransaction: Int, operation: Int, dateTransaction: Date, balance: Int, id: String) {
+    init(description: String, sumTransaction: Int, operation: Int, dateTransaction: Date, id: String) {
         self.description = description
         self.sumTransaction = sumTransaction
         self.operation = operation
         self.dateTransaction = dateTransaction
-        self.balance = balance
         self.id = id
     }
     
@@ -30,7 +28,6 @@ struct ExpensesItem: Hashable {
               let sumTransaction = data["sumTransaction"] as? Int,
               let operation = data["operation"] as? Int,
               let dateTransaction = data["dateTransaction"] as? Timestamp,
-              let balance = data["balance"] as? Int,
               let id = data["uid"] as? String
         else { return nil }
         
@@ -38,7 +35,6 @@ struct ExpensesItem: Hashable {
         self.sumTransaction = sumTransaction
         self.operation = operation
         self.dateTransaction = dateTransaction.dateValue()
-        self.balance = balance
         self.id = id
     }
     
@@ -48,7 +44,6 @@ struct ExpensesItem: Hashable {
         rep["sumTransaction"] = sumTransaction
         rep["operation"] = operation
         rep["dateTransaction"] = dateTransaction
-        rep["balance"] = balance
         rep["uid"] = id
         return rep
     }
