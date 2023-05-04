@@ -17,8 +17,8 @@ class FirestoreServise {
         return db.collection("wallet")
     }
     
-    func saveTransactionWith(description: String, sum: Int, operation: Int, date: Date) {
-        let item = ExpensesItem(description: description, sumTransaction: sum, operation: operation, dateTransaction: date, id: UUID().uuidString)
+    func saveTransactionWith(description: String, sum: Int, operation: Int, type: String, date: Date) {
+        let item = ExpensesItem(description: description, sumTransaction: sum, operation: operation, operationType: type, dateTransaction: date, id: UUID().uuidString)
         self.walletRef.document(item.id).setData(item.representation) { error in
             if let error {
                 print(error.localizedDescription)
@@ -34,10 +34,11 @@ class FirestoreServise {
         }
     }
     
-    func updateTransaction(description: String, sum: Int, operation: Int, date: Date, id: String) {
+    func updateTransaction(description: String, sum: Int, operation: Int, type: String, date: Date, id: String) {
         let dictionry: [String: Any] = ["description": description,
                                         "sumTransaction": sum,
                                         "operation": operation,
+                                        "operationType": type,
                                         "dateTransaction": date,
                                         "uid": id]
         walletRef.document(id).updateData(dictionry) { error in
