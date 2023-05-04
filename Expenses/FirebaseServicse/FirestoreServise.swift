@@ -26,20 +26,25 @@ class FirestoreServise {
         }
     }
     
-    func deleteTransaction(item: ExpensesItem) {
-        walletRef.document(item.id).delete { error in
+    func deleteTransaction(itemId: String) {
+        walletRef.document(itemId).delete { error in
             if let error {
                 print(error.localizedDescription)
             }
         }
     }
     
-    func updateTransaction(item: ExpensesItem) {
-//        walletRef.document(item.id).updateData(["balance": item.balance]) { error in
-//            if let error {
-//                print(error.localizedDescription)
-//            }
-//        }
+    func updateTransaction(description: String, sum: Int, operation: Int, date: Date, id: String) {
+        let dictionry: [String: Any] = ["description": description,
+                                        "sumTransaction": sum,
+                                        "operation": operation,
+                                        "dateTransaction": date,
+                                        "uid": id]
+        walletRef.document(id).updateData(dictionry) { error in
+            if let error {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

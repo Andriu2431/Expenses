@@ -18,7 +18,6 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormater.dateFormat = "dd/MM/yyyy"
-        tableView.allowsSelection = false
         tableView.keyboardDismissMode = .onDrag
         listListener = ListenerServise.shared.walletObserve(items: items, completion: { [weak self] result in
             self?.updateUI(result)
@@ -78,14 +77,51 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Delete"
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        UISwipeActionsConfiguration(actions: createSwipeActions(index: indexPath.row))
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        FirestoreServise.shared.deleteTransaction(item: item)
-        self.tableView.reloadData()
+        pushEditViewController(item: item)
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    private func pushEditViewController(item: ExpensesItem) {
+        let editVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! AddTransactionVC
+        editVC.configure(item: item)
+        self.navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    private func createSwipeActions(index: Int) -> [UIContextualAction] {
+        let deleteAction = UIContextualAction(style: .normal, title: "Видалити") { [weak self] (action, view, handler) in
+            guard let self = self else { return }
+            self.deleteAllertController(index: index)
+        }
+        deleteAction.backgroundColor = .red
+        
+        let editAction = UIContextualAction(style: .normal, title: "Редагувати") { [weak self] (action, view, handler) in
+            guard let self = self else { return }
+            let item = self.items[index]
+            self.pushEditViewController(item: item)
+        }
+        editAction.backgroundColor = .gray
+        
+        return [deleteAction, editAction]
+    }
+    
+    private func deleteAllertController(index: Int) {
+        let alert = UIAlertController(title: "Підтвердіть!", message: "Ви дійсно хочете видалити цей елемент?", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Так", style: .default) { [unowned self] action in
+            let item = self.items[index]
+            FirestoreServise.shared.deleteTransaction(itemId: item.id)
+            self.tableView.reloadData()
+        }
+        let no = UIAlertAction(title: "Ні", style: .cancel)
+        
+        alert.addAction(yes)
+        alert.addAction(no)
+        self.present(alert, animated: true)
     }
 }
 

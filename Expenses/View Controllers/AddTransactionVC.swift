@@ -9,26 +9,47 @@ import UIKit
 
 class AddTransactionVC: UIViewController {
 
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var costTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var sumTransaction: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var plassOrMinus: UISegmentedControl!
+    @IBOutlet weak var operation: UISegmentedControl!
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    private var item: ExpensesItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        costTextField.keyboardType = .numberPad
-        datePicker.datePickerMode = .date
-        plassOrMinus.selectedSegmentIndex = 1
+        setupUI()
         changeColorSegmentedControl()
-        plassOrMinus.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
+        operation.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
     }
     
+    func configure(item: ExpensesItem) {
+        self.item = item
+    }
+    
+    private func setupUI() {
+        updateButton.isHidden = true
+        title = "Нова транзакція"
+        guard let item = self.item else { return }
+        
+        title = "Редагування"
+        descriptionTextField.text = item.description
+        sumTransaction.text = String(item.sumTransaction)
+        operation.selectedSegmentIndex = item.operation
+        datePicker.date = item.dateTransaction
+        saveButton.isHidden = true
+        updateButton.isHidden = false
+    }
+
+    
    @objc private func changeColorSegmentedControl() {
-       if plassOrMinus.selectedSegmentIndex == 0 {
-           plassOrMinus.selectedSegmentTintColor = .green
+       if operation.selectedSegmentIndex == 0 {
+           operation.selectedSegmentTintColor = .green
        } else {
-           plassOrMinus.selectedSegmentTintColor = .red
+           operation.selectedSegmentTintColor = .red
        }
     }
     
@@ -36,18 +57,35 @@ class AddTransactionVC: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func saveButton(_ sender: Any) {
-        guard let description = nameTextField.text,
-              let sumTransaction = Int(costTextField.text ?? ""),
+    @IBAction func saveButtonTaped(_ sender: Any) {
+        guard let description = descriptionTextField.text,
+              let sum = Int(sumTransaction.text ?? ""),
               !description.isEmpty else {
             self.createAlert(message: "Введіть коректну суму!")
             return
         }
         
         FirestoreServise.shared.saveTransactionWith(description: description,
-                                                    sum: sumTransaction,
-                                                    operation: plassOrMinus.selectedSegmentIndex,
+                                                    sum: sum,
+                                                    operation: operation.selectedSegmentIndex,
                                                     date: datePicker.date)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func updateButtonTaped(_ sender: Any) {
+        guard let item = item,
+              let description = descriptionTextField.text,
+              let sum = Int(sumTransaction.text ?? ""),
+              !description.isEmpty else {
+            self.createAlert(message: "Введіть коректну суму!")
+            return
+        }
+        
+        FirestoreServise.shared.updateTransaction(description: description,
+                                                  sum: sum,
+                                                  operation: operation.selectedSegmentIndex,
+                                                  date: datePicker.date,
+                                                  id: item.id)
         navigationController?.popViewController(animated: true)
     }
     

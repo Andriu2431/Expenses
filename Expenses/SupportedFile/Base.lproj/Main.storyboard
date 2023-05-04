@@ -194,22 +194,11 @@
         <!--Add TransactionVC-->
         <scene sceneID="UdN-bz-dvK">
             <objects>
-                <viewController id="BxH-Vq-C4U" customClass="AddTransactionVC" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailVC" id="BxH-Vq-C4U" customClass="AddTransactionVC" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="49F-59-1Gm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BQ-l6-YoB">
-                                <rect key="frame" x="168.5" y="783" width="77" height="34.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77" id="2fu-TL-k1m"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="save"/>
-                                <connections>
-                                    <action selector="saveButton:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="3No-9S-IfE"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jd-vl-I46">
                                 <rect key="frame" x="57" y="124" width="300" height="250"/>
                                 <subviews>
@@ -222,7 +211,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-bk-ZFN">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-bk-ZFN">
                                         <rect key="frame" x="21" y="15" width="254" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="254" id="Efg-oD-vKN"/>
@@ -259,7 +248,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="laA-54-STL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZv-ef-1lc">
                                         <rect key="frame" x="25" y="194" width="250" height="1"/>
@@ -291,7 +280,7 @@
                                     <constraint firstItem="9Cv-JN-K4r" firstAttribute="top" secondItem="2Bd-cF-8eU" secondAttribute="bottom" constant="10" id="seK-Kl-7Ps"/>
                                 </constraints>
                             </view>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="OtH-pF-bA0">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="OtH-pF-bA0">
                                 <rect key="frame" x="47" y="382" width="320" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="1ac-hD-Sux"/>
@@ -299,24 +288,44 @@
                                 </constraints>
                                 <locale key="locale" localeIdentifier="uk"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYd-yp-orX">
+                                <rect key="frame" x="168.5" y="756" width="77.5" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="update"/>
+                                <connections>
+                                    <action selector="updateButtonTaped:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="VZL-j5-kLs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BQ-l6-YoB">
+                                <rect key="frame" x="177.5" y="804" width="59" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="save"/>
+                                <connections>
+                                    <action selector="saveButtonTaped:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="ivK-fw-2U7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQ5-SP-V11"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
+                            <constraint firstItem="sYd-yp-orX" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="40l-p4-Nyy"/>
                             <constraint firstItem="5jd-vl-I46" firstAttribute="top" secondItem="rQ5-SP-V11" secondAttribute="top" constant="32" id="8nd-2i-yvp"/>
                             <constraint firstItem="OtH-pF-bA0" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="N0D-Nx-fgL"/>
                             <constraint firstItem="5jd-vl-I46" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="N3a-Yg-aWW"/>
                             <constraint firstItem="OtH-pF-bA0" firstAttribute="top" secondItem="5jd-vl-I46" secondAttribute="bottom" constant="8" id="YaZ-2F-CVw"/>
-                            <constraint firstItem="9BQ-l6-YoB" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="Z6u-vB-G1h"/>
-                            <constraint firstItem="rQ5-SP-V11" firstAttribute="bottom" secondItem="9BQ-l6-YoB" secondAttribute="bottom" constant="44.5" id="eLV-oj-ny5"/>
+                            <constraint firstItem="9BQ-l6-YoB" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="YcG-xB-2im"/>
+                            <constraint firstItem="rQ5-SP-V11" firstAttribute="bottom" secondItem="9BQ-l6-YoB" secondAttribute="bottom" constant="23.5" id="jMT-ei-Gyw"/>
+                            <constraint firstItem="rQ5-SP-V11" firstAttribute="bottom" secondItem="sYd-yp-orX" secondAttribute="bottom" constant="71.5" id="x30-wm-AWp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Ha-ez-krG"/>
                     <connections>
-                        <outlet property="costTextField" destination="3k0-A0-SVf" id="SL1-mk-5f4"/>
                         <outlet property="datePicker" destination="OtH-pF-bA0" id="6Cw-cn-hBU"/>
-                        <outlet property="nameTextField" destination="9Cv-JN-K4r" id="dR4-jd-gAL"/>
-                        <outlet property="plassOrMinus" destination="q2K-bk-ZFN" id="cb5-lH-gUr"/>
+                        <outlet property="descriptionTextField" destination="9Cv-JN-K4r" id="dR4-jd-gAL"/>
+                        <outlet property="operation" destination="q2K-bk-ZFN" id="cb5-lH-gUr"/>
+                        <outlet property="saveButton" destination="9BQ-l6-YoB" id="qls-z8-xlv"/>
+                        <outlet property="sumTransaction" destination="3k0-A0-SVf" id="SL1-mk-5f4"/>
+                        <outlet property="updateButton" destination="sYd-yp-orX" id="goV-8x-gyL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wys-5c-Xy7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
