@@ -18,7 +18,7 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var operationTypePicker: UIPickerView!
     
     private var item: ExpensesItem?
-    private let arrayOperationTypes = ["Продукти", "Розваги", "Навчання", "Інше", "Інвестиції"]
+    private let arrayOperationTypes = ["Продукти", "Розваги", "Навчання", "Поїздки", "Інше", "Інвестиції"]
     private var selectedOperationType = ""
     
     override func viewDidLoad() {
@@ -36,6 +36,7 @@ class AddTransactionVC: UIViewController {
     }
     
     private func setupUI() {
+        datePicker.contentHorizontalAlignment = .center
         updateButton.isHidden = true
         title = "Нова транзакція"
         guard let item = self.item else { return }
@@ -73,7 +74,7 @@ class AddTransactionVC: UIViewController {
         FirestoreServise.shared.saveTransactionWith(description: descriptionTextField.text ?? "",
                                                     sum: sum,
                                                     operation: operation.selectedSegmentIndex,
-                                                    type: selectedOperationType,
+                                                    type: selectedOperationType.isEmpty ? arrayOperationTypes[0] : selectedOperationType ,
                                                     date: datePicker.date)
         navigationController?.popViewController(animated: true)
     }

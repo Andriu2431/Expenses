@@ -9,7 +9,7 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-//    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var cost: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var opetaionType: UILabel!
@@ -22,7 +22,7 @@ class CustomTableViewCell: UITableViewCell {
     }
 
     func configure(item: ExpensesItem) {
-//        descriptionLabel.text = item.description
+        descriptionLabel.text = item.description
         dateLabel.text = dateFormater.string(from: item.dateTransaction)
         opetaionType.text = item.operationType
         switch item.operation {
