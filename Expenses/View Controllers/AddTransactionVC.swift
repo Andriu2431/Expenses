@@ -18,8 +18,7 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var operationTypePicker: UIPickerView!
     
     private var item: ExpensesItem?
-    private let arrayOperationTypes = ["Продукти", "Розваги", "Навчання", "Поїздки", "Інше", "Інвестиції"]
-    private var selectedOperationType = ""
+    private var selectedOperationType: Operation = .product
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +26,34 @@ class AddTransactionVC: UIViewController {
         operationTypePicker.dataSource = self
         setupUI()
         changeColorSegmentedControl()
+        notificationObserver()
         operation.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func notificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func configure(item: ExpensesItem) {
@@ -45,8 +70,8 @@ class AddTransactionVC: UIViewController {
         descriptionTextField.text = item.description
         sumTransaction.text = String(item.sumTransaction)
         operation.selectedSegmentIndex = item.operation
-        selectedOperationType = item.operationType
-        operationTypePicker.selectRow(arrayOperationTypes.firstIndex(of: selectedOperationType) ?? 0, inComponent: 0, animated: true)
+        selectedOperationType = Operation(rawValue: item.operationType) ?? .product
+        operationTypePicker.selectRow(Operation.allCases.firstIndex(of: selectedOperationType) ?? 0, inComponent: 0, animated: true)
         datePicker.date = item.dateTransaction
         saveButton.isHidden = true
         updateButton.isHidden = false
@@ -74,7 +99,7 @@ class AddTransactionVC: UIViewController {
         FirestoreServise.shared.saveTransactionWith(description: descriptionTextField.text ?? "",
                                                     sum: sum,
                                                     operation: operation.selectedSegmentIndex,
-                                                    type: selectedOperationType.isEmpty ? arrayOperationTypes[0] : selectedOperationType ,
+                                                    type: selectedOperationType.rawValue,
                                                     date: datePicker.date)
         navigationController?.popViewController(animated: true)
     }
@@ -88,7 +113,7 @@ class AddTransactionVC: UIViewController {
         FirestoreServise.shared.updateTransaction(description: descriptionTextField.text ?? "",
                                                   sum: sum,
                                                   operation: operation.selectedSegmentIndex,
-                                                  type: selectedOperationType,
+                                                  type: selectedOperationType.rawValue,
                                                   date: datePicker.date,
                                                   id: item.id)
         navigationController?.popViewController(animated: true)
@@ -108,14 +133,14 @@ extension AddTransactionVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        arrayOperationTypes.count
+        Operation.allCases.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        arrayOperationTypes[row]
+        Operation.allCases[row].rawValue
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedOperationType = arrayOperationTypes[row]
+        selectedOperationType = Operation.allCases[row]
     }
 }

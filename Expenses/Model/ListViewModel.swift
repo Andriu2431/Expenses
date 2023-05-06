@@ -15,6 +15,15 @@ protocol ListViewModelProtocol {
     func deleteTransaction(indexPath: IndexPath) 
 }
 
+enum Operation: String, CaseIterable {
+    case product = "Продукти"
+    case fun = "Розваги"
+    case studying = "Навчання"
+    case trips = "Поїздки"
+    case other = "Інше"
+    case investments = "Інвестиції"
+    case salary = "Зарплата"
+}
 
 class ListViewModel: ListViewModelProtocol {
     
@@ -33,6 +42,10 @@ class ListViewModel: ListViewModelProtocol {
         }
         
         return String(profit.reduce(0, +) - costs.reduce(0, +))
+    }
+    
+    private func calculateExpenses() {
+        let product = items.filter { $0.operationType == Operation.product.rawValue }
     }
     
     func deleteTransaction(indexPath: IndexPath) {

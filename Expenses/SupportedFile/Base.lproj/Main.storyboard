@@ -144,7 +144,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30000 грн" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG6-xH-Hhr">
-                                                    <rect key="frame" x="302" y="30" width="92" height="20.5"/>
+                                                    <rect key="frame" x="228" y="30" width="166" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="PGH-ep-asl"/>
                                                     </constraints>
@@ -153,9 +153,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xam-0y-z69">
-                                                    <rect key="frame" x="122" y="11" width="170" height="58"/>
+                                                    <rect key="frame" x="186.5" y="11" width="41.5" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="58" id="7BH-rA-b1E"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="rh0-KQ-BVi"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -164,12 +165,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yG6-xH-Hhr" firstAttribute="centerY" secondItem="ge8-mb-T5l" secondAttribute="centerY" id="DZ2-50-rXQ"/>
+                                                <constraint firstItem="xam-0y-z69" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X7S-fC-Rmo" secondAttribute="trailing" constant="15" id="Ei5-hj-hey"/>
                                                 <constraint firstItem="iOs-kW-xxL" firstAttribute="centerY" secondItem="ge8-mb-T5l" secondAttribute="centerY" id="IDh-Of-2aa"/>
                                                 <constraint firstItem="xam-0y-z69" firstAttribute="centerY" secondItem="ge8-mb-T5l" secondAttribute="centerY" id="OJx-ew-nVO"/>
                                                 <constraint firstItem="xam-0y-z69" firstAttribute="centerX" secondItem="ge8-mb-T5l" secondAttribute="centerX" id="S0h-wJ-RJ9"/>
                                                 <constraint firstAttribute="trailing" secondItem="yG6-xH-Hhr" secondAttribute="trailing" constant="20" symbolic="YES" id="dCO-tB-ecR"/>
-                                                <constraint firstItem="yG6-xH-Hhr" firstAttribute="leading" secondItem="xam-0y-z69" secondAttribute="trailing" constant="10" id="qMI-A0-jkf"/>
-                                                <constraint firstItem="xam-0y-z69" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ge8-mb-T5l" secondAttribute="leading" constant="122" id="unj-Z0-ZSN"/>
+                                                <constraint firstItem="yG6-xH-Hhr" firstAttribute="leading" secondItem="xam-0y-z69" secondAttribute="trailing" id="g3D-su-EIh"/>
                                                 <constraint firstItem="iOs-kW-xxL" firstAttribute="leading" secondItem="ge8-mb-T5l" secondAttribute="leading" constant="20" symbolic="YES" id="vwy-zI-EYK"/>
                                             </constraints>
                                         </tableViewCellContentView>

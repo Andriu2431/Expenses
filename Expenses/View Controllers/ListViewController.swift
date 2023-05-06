@@ -86,7 +86,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let alert = UIAlertController(title: "Підтвердіть!", message: "Ви дійсно хочете видалити цей елемент?", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Так", style: .default) { [unowned self] action in
             viewModel?.deleteTransaction(indexPath: indexPath)
-            self.tableView.reloadData()
         }
         let no = UIAlertAction(title: "Ні", style: .cancel)
         
