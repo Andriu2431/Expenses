@@ -17,6 +17,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ListViewModel()
+        tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
         listListener = ListenerServise.shared.walletObserve(items: viewModel!.items, completion: { [weak self] result in
             self?.updateUI(result)
@@ -46,7 +47,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

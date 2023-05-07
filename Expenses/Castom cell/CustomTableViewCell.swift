@@ -9,6 +9,7 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cornerView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var cost: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -18,6 +19,10 @@ class CustomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        cornerView.clipsToBounds = true
+        cornerView.layer.cornerRadius = 20
+        cornerView.layer.borderColor = UIColor.gray.cgColor
+        cornerView.layer.borderWidth = 0.5
         dateFormater.dateFormat = "dd/MM/yyyy"
     }
 
