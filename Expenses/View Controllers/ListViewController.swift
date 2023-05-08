@@ -11,6 +11,9 @@ import FirebaseFirestore
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var expensesViewHeight: NSLayoutConstraint!
+    
     private var listListener: ListenerRegistration?
     var viewModel: ListViewModelProtocol?
     
@@ -22,6 +25,11 @@ class ListViewController: UIViewController {
         listListener = ListenerServise.shared.walletObserve(items: viewModel!.items, completion: { [weak self] result in
             self?.updateUI(result)
         })
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        contentViewHeight.constant = view.safeAreaLayoutGuide.layoutFrame.size.height + expensesViewHeight.constant
     }
     
     private func updateUI(_ result: Result<[ExpensesItem], Error>) {
@@ -41,6 +49,14 @@ class ListViewController: UIViewController {
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        30
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Всі витрати!"
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.items.count ?? 0
