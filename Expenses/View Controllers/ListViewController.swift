@@ -11,8 +11,8 @@ import FirebaseFirestore
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var expensesViewHeight: NSLayoutConstraint!
     
     private var listListener: ListenerRegistration?
     var viewModel: ListViewModelProtocol?
@@ -29,7 +29,7 @@ class ListViewController: UIViewController {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        contentViewHeight.constant = view.safeAreaLayoutGuide.layoutFrame.size.height + expensesViewHeight.constant
+        contentViewHeight.constant = view.safeAreaLayoutGuide.layoutFrame.size.height + collectionView.frame.height
     }
     
     private func updateUI(_ result: Result<[ExpensesItem], Error>) {
@@ -38,6 +38,7 @@ class ListViewController: UIViewController {
             viewModel?.setup(items: success.sorted(by: { $0.dateTransaction > $1.dateTransaction }))
             title = viewModel?.currentBalanceCalculation()
             tableView.reloadData()
+            collectionView.reloadData()
         case .failure(let failure):
             print(failure.localizedDescription)
         }
@@ -112,3 +113,17 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel?.operationTypeItems.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CustomCollectionViewCell
+        guard let operationTypeItem = viewModel?.operationTypeItems[indexPath.row] else { return UICollectionViewCell() }
+        cell.configure(item: operationTypeItem)
+        return cell
+    }
+    
+}

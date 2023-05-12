@@ -9,6 +9,7 @@ import UIKit
 
 protocol ListViewModelProtocol {
     var items: [ExpensesItem] {get}
+    var operationTypeItems: [OperationTypeExpensesItem] {get}
     func setup(items: [ExpensesItem])
     func currentBalanceCalculation() -> String
     func createEditViewController(indexPath: IndexPath) -> AddTransactionVC
@@ -28,9 +29,11 @@ enum Operation: String, CaseIterable {
 class ListViewModel: ListViewModelProtocol {
     
     var items = [ExpensesItem]()
+    var operationTypeItems = [OperationTypeExpensesItem]()
     
     func setup(items: [ExpensesItem]) {
         self.items = items
+        self.operationTypeItems = getOperationTypeItems()
     }
     
     func currentBalanceCalculation() -> String {
@@ -44,10 +47,6 @@ class ListViewModel: ListViewModelProtocol {
         return String(profit.reduce(0, +) - costs.reduce(0, +))
     }
     
-    private func calculateExpenses() {
-        let product = items.filter { $0.operationType == Operation.product.rawValue }
-    }
-    
     func deleteTransaction(indexPath: IndexPath) {
         FirestoreServise.shared.deleteTransaction(itemId: items[indexPath.row].id)
     }
@@ -57,5 +56,32 @@ class ListViewModel: ListViewModelProtocol {
         let editVC = storyboard.instantiateViewController(withIdentifier: "detailVC") as! AddTransactionVC
         editVC.configure(item: items[indexPath.row])
         return editVC
+    }
+    
+    private func getOperationTypeItems() -> [OperationTypeExpensesItem] {
+        var collectionItemModel = [OperationTypeExpensesItem]()
+        
+        Operation.allCases.forEach { operation in
+            let expenses = calculateFor(operation: operation)
+            if expenses != 0 {
+                collectionItemModel.append(OperationTypeExpensesItem(iconName: operation.rawValue, expenses: expenses))
+            }
+        }
+        return collectionItemModel
+    }
+    
+    private func calculateFor(operation: Operation) -> Int {
+        var cost = 0
+        
+        let filterItesm = items.filter {$0.operationType == operation.rawValue}
+        filterItesm.forEach { item in
+            if item.operation == 0 {
+                cost += item.sumTransaction
+            } else {
+                cost -= item.sumTransaction
+            }
+        }
+        
+        return cost
     }
 }
