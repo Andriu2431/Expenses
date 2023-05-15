@@ -21,9 +21,10 @@
 		165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021DF293E172D003CEC30 /* ExpensesItem.swift */; };
 		165021E2293E24AB003CEC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 165021E1293E24AB003CEC30 /* GoogleService-Info.plist */; };
 		165021E4293E319D003CEC30 /* ListenerServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021E3293E319D003CEC30 /* ListenerServise.swift */; };
-		16CF915D2A03BAD300E3A122 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF915C2A03BAD300E3A122 /* ListViewModel.swift */; };
+		16CF915D2A03BAD300E3A122 /* ListTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF915C2A03BAD300E3A122 /* ListTableViewViewModel.swift */; };
 		16E0EA782A096B59001EF537 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EA772A096B59001EF537 /* CustomCollectionViewCell.swift */; };
 		16E0EA7A2A098101001EF537 /* OperationTypeExpensesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EA792A098101001EF537 /* OperationTypeExpensesItem.swift */; };
+		16E0EBBA2A123F76001EF537 /* ListTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */; };
 		B07EA0B81867D214D73D6D9C /* Pods_Expenses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA5001DCB3EF7811D0C8D7B /* Pods_Expenses.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,9 +45,10 @@
 		165021DF293E172D003CEC30 /* ExpensesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesItem.swift; sourceTree = "<group>"; };
 		165021E1293E24AB003CEC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		165021E3293E319D003CEC30 /* ListenerServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerServise.swift; sourceTree = "<group>"; };
-		16CF915C2A03BAD300E3A122 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		16CF915C2A03BAD300E3A122 /* ListTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewViewModel.swift; sourceTree = "<group>"; };
 		16E0EA772A096B59001EF537 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		16E0EA792A098101001EF537 /* OperationTypeExpensesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTypeExpensesItem.swift; sourceTree = "<group>"; };
+		16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9EA5001DCB3EF7811D0C8D7B /* Pods_Expenses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expenses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A240BB348F73E242707A0880 /* Pods-Expenses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expenses.debug.xcconfig"; path = "Target Support Files/Pods-Expenses/Pods-Expenses.debug.xcconfig"; sourceTree = "<group>"; };
 		E16E26649EB2C57BCC63F423 /* Pods-Expenses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expenses.release.xcconfig"; path = "Target Support Files/Pods-Expenses/Pods-Expenses.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,7 +152,8 @@
 		16E0EA7B2A0A3BE4001EF537 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				16CF915C2A03BAD300E3A122 /* ListViewModel.swift */,
+				16CF915C2A03BAD300E3A122 /* ListTableViewViewModel.swift */,
+				16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -290,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16E0EA7A2A098101001EF537 /* OperationTypeExpensesItem.swift in Sources */,
-				16CF915D2A03BAD300E3A122 /* ListViewModel.swift in Sources */,
+				16CF915D2A03BAD300E3A122 /* ListTableViewViewModel.swift in Sources */,
 				1616C31E291BCA56000C0043 /* AddTransactionVC.swift in Sources */,
 				1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */,
 				165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */,
@@ -298,6 +301,7 @@
 				1616C308291BBF8C000C0043 /* AppDelegate.swift in Sources */,
 				1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */,
 				1616C30A291BBF8C000C0043 /* SceneDelegate.swift in Sources */,
+				16E0EBBA2A123F76001EF537 /* ListTableViewCellViewModel.swift in Sources */,
 				165021DE293E14FA003CEC30 /* FirestoreServise.swift in Sources */,
 				165021E4293E319D003CEC30 /* ListenerServise.swift in Sources */,
 				16E0EA782A096B59001EF537 /* CustomCollectionViewCell.swift in Sources */,

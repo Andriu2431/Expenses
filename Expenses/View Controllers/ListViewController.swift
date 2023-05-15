@@ -16,11 +16,11 @@ class ListViewController: UIViewController {
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     private var listListener: ListenerRegistration?
-    var viewModel: ListViewModelProtocol?
+    private var viewModel: TableViewViewModelType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ListViewModel()
+        viewModel = ListTableViewViewModel()
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
         listListener = ListenerServise.shared.walletObserve(items: viewModel!.items, completion: { [weak self] result in
@@ -43,7 +43,7 @@ class ListViewController: UIViewController {
     
     private func updateConstaraint() {
         let countOperationType = viewModel?.operationTypeItems.count ?? 0
-        collectionViewHeight.constant = countOperationType > 3 ? collectionViewHeight.constant : collectionViewHeight.constant / 2
+        collectionViewHeight.constant = countOperationType > 3 ? 180 : 90
         contentViewHeight.constant = view.safeAreaLayoutGuide.layoutFrame.size.height + collectionViewHeight.constant
     }
     
@@ -72,8 +72,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        guard let item = viewModel?.items[indexPath.row] else { return UITableViewCell() }
-        cell.configure(item: item)
+        guard let cellViewModel = viewModel?.getCellViewModel(indexPath: indexPath) else { return UITableViewCell() }
+        cell.viewModel = cellViewModel
         return cell
     }
     

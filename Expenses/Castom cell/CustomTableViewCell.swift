@@ -15,7 +15,16 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var opetaionType: UILabel!
     
-    private var dateFormater = DateFormatter()
+    var viewModel: TableViewCellViewModelType? {
+        willSet(newViewModel) {
+            guard let viewModel = newViewModel else { return }
+            descriptionLabel.text = viewModel.description
+            dateLabel.text = viewModel.dateTransaction
+            opetaionType.text = viewModel.operationType
+            cost.text = viewModel.sumTransactionText
+            cost.textColor = viewModel.sumTransactionTextColor
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,20 +32,5 @@ class CustomTableViewCell: UITableViewCell {
         cornerView.layer.cornerRadius = 20
         cornerView.layer.borderColor = UIColor.gray.cgColor
         cornerView.layer.borderWidth = 0.5
-        dateFormater.dateFormat = "dd/MM/yyyy"
-    }
-
-    func configure(item: ExpensesItem) {
-        descriptionLabel.text = item.description
-        dateLabel.text = dateFormater.string(from: item.dateTransaction)
-        opetaionType.text = item.operationType
-        switch item.operation {
-        case 0:
-            cost.text = "+\(item.sumTransaction) грн"
-            cost.textColor = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
-        default:
-            cost.text = "-\(item.sumTransaction) грн"
-            cost.textColor = .red
-        }
     }
 }

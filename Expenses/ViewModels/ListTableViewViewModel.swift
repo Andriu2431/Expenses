@@ -1,5 +1,5 @@
 //
-//  ListViewModel.swift
+//  ListTableViewViewModel.swift
 //  Expenses
 //
 //  Created by Andrii Malyk on 04.05.2023.
@@ -7,13 +7,14 @@
 
 import UIKit
 
-protocol ListViewModelProtocol {
+protocol TableViewViewModelType {
     var items: [ExpensesItem] {get}
     var operationTypeItems: [OperationTypeExpensesItem] {get}
     func setup(items: [ExpensesItem])
     func currentBalanceCalculation() -> String
     func createEditViewController(indexPath: IndexPath) -> AddTransactionVC
-    func deleteTransaction(indexPath: IndexPath) 
+    func deleteTransaction(indexPath: IndexPath)
+    func getCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelType?
 }
 
 enum Operation: String, CaseIterable {
@@ -26,7 +27,7 @@ enum Operation: String, CaseIterable {
     case salary = "Зарплата"
 }
 
-class ListViewModel: ListViewModelProtocol {
+class ListTableViewViewModel: TableViewViewModelType {
     
     var items = [ExpensesItem]()
     var operationTypeItems = [OperationTypeExpensesItem]()
@@ -56,6 +57,11 @@ class ListViewModel: ListViewModelProtocol {
         let editVC = storyboard.instantiateViewController(withIdentifier: "detailVC") as! AddTransactionVC
         editVC.configure(item: items[indexPath.row])
         return editVC
+    }
+    
+    func getCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelType? {
+        let item = items[indexPath.row]
+        return ListTableViewCellViewModel(item: item)
     }
     
     private func getOperationTypeItems() -> [OperationTypeExpensesItem] {
