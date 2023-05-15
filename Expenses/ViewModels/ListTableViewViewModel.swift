@@ -17,8 +17,8 @@ protocol TableViewViewModelProtocol {
     func createEditViewController(indexPath: IndexPath, viewController: UIViewController)
     func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction]
     func deleteTransaction(indexPath: IndexPath)
-    func getTableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol?
-    func getCollectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol?
+    func tableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol?
+    func collectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol?
 }
 
 enum Operation: String, CaseIterable {
@@ -68,8 +68,9 @@ class ListTableViewViewModel: TableViewViewModelProtocol {
     
     func createEditViewController(indexPath: IndexPath, viewController: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let editVC = storyboard.instantiateViewController(withIdentifier: "detailVC") as! AddTransactionVC
-        editVC.configure(item: items[indexPath.row])
+        let editVC = storyboard.instantiateViewController(withIdentifier: "AddOrEditVC") as! AddOrEditTransactionVC
+        let editViewModel = AddOrEditViewModel(item: items[indexPath.row])
+        editVC.viewModel = editViewModel
         viewController.navigationController?.pushViewController(editVC, animated: true)
     }
     
@@ -89,7 +90,7 @@ class ListTableViewViewModel: TableViewViewModelProtocol {
         return [deleteAction, editAction]
     }
     
-    func getTableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol? {
+    func tableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol? {
         let item = items[indexPath.row]
         return ListTableViewCellViewModel(item: item)
     }
@@ -100,7 +101,7 @@ class ListTableViewViewModel: TableViewViewModelProtocol {
         operationTypeItems.count
     }
     
-    func getCollectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol? {
+    func collectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol? {
         let item = operationTypeItems[indexPath.row]
         return CollectionViewCellViewModel(item: item)
     }

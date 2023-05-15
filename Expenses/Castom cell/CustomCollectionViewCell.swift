@@ -12,7 +12,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var costLabel: UILabel!
     
-    var viewModel: CollectionViewCellViewModelProtocol? {
+    weak var viewModel: CollectionViewCellViewModelProtocol? {
         willSet(newViewModel) {
             guard let viewModel = newViewModel else { return }
             imageView.image = viewModel.image

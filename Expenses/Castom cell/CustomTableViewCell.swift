@@ -15,7 +15,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var opetaionType: UILabel!
     
-    var viewModel: TableViewCellViewModelProtocol? {
+    weak var viewModel: TableViewCellViewModelProtocol? {
         willSet(newViewModel) {
             guard let viewModel = newViewModel else { return }
             descriptionLabel.text = viewModel.description

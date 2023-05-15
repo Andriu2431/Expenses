@@ -71,7 +71,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        guard let cellViewModel = viewModel?.getTableViewCellViewModel(indexPath: indexPath) else { return UITableViewCell() }
+        guard let cellViewModel = viewModel?.tableViewCellViewModel(indexPath: indexPath) else { return UITableViewCell() }
         cell.viewModel = cellViewModel
         return cell
     }
@@ -94,7 +94,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CustomCollectionViewCell
-        guard let cellViewModel = viewModel?.getCollectioViewCellViewModel(indexPath: indexPath) else { return UICollectionViewCell() }
+        guard let cellViewModel = viewModel?.collectioViewCellViewModel(indexPath: indexPath) else { return UICollectionViewCell() }
         cell.viewModel = cellViewModel
         return cell
     }

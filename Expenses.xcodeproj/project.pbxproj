@@ -15,7 +15,7 @@
 		1616C311291BBF90000C0043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1616C310291BBF90000C0043 /* Assets.xcassets */; };
 		1616C314291BBF90000C0043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1616C312291BBF90000C0043 /* LaunchScreen.storyboard */; };
 		1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31B291BC295000C0043 /* CustomTableViewCell.swift */; };
-		1616C31E291BCA56000C0043 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31D291BCA56000C0043 /* AddTransactionVC.swift */; };
+		1616C31E291BCA56000C0043 /* AddOrEditTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31D291BCA56000C0043 /* AddOrEditTransactionVC.swift */; };
 		16375777293F3A9100596A30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 16375776293F3A9100596A30 /* .gitignore */; };
 		165021DE293E14FA003CEC30 /* FirestoreServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021DD293E14FA003CEC30 /* FirestoreServise.swift */; };
 		165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021DF293E172D003CEC30 /* ExpensesItem.swift */; };
@@ -26,6 +26,7 @@
 		16E0EA7A2A098101001EF537 /* OperationTypeExpensesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EA792A098101001EF537 /* OperationTypeExpensesItem.swift */; };
 		16E0EBBA2A123F76001EF537 /* ListTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */; };
 		16E0EBBC2A1250E9001EF537 /* CollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBBB2A1250E9001EF537 /* CollectionViewCellViewModel.swift */; };
+		16E0EBBE2A126C5D001EF537 /* AddOrEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBBD2A126C5D001EF537 /* AddOrEditViewModel.swift */; };
 		B07EA0B81867D214D73D6D9C /* Pods_Expenses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA5001DCB3EF7811D0C8D7B /* Pods_Expenses.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +41,7 @@
 		1616C313291BBF90000C0043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1616C315291BBF90000C0043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1616C31B291BC295000C0043 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		1616C31D291BCA56000C0043 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
+		1616C31D291BCA56000C0043 /* AddOrEditTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditTransactionVC.swift; sourceTree = "<group>"; };
 		16375776293F3A9100596A30 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		165021DD293E14FA003CEC30 /* FirestoreServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServise.swift; sourceTree = "<group>"; };
 		165021DF293E172D003CEC30 /* ExpensesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesItem.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		16E0EA792A098101001EF537 /* OperationTypeExpensesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTypeExpensesItem.swift; sourceTree = "<group>"; };
 		16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		16E0EBBB2A1250E9001EF537 /* CollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		16E0EBBD2A126C5D001EF537 /* AddOrEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditViewModel.swift; sourceTree = "<group>"; };
 		9EA5001DCB3EF7811D0C8D7B /* Pods_Expenses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expenses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A240BB348F73E242707A0880 /* Pods-Expenses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expenses.debug.xcconfig"; path = "Target Support Files/Pods-Expenses/Pods-Expenses.debug.xcconfig"; sourceTree = "<group>"; };
 		E16E26649EB2C57BCC63F423 /* Pods-Expenses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expenses.release.xcconfig"; path = "Target Support Files/Pods-Expenses/Pods-Expenses.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
-				1616C31D291BCA56000C0043 /* AddTransactionVC.swift */,
+				1616C31D291BCA56000C0043 /* AddOrEditTransactionVC.swift */,
 				160E94CF2941EC6B00838B21 /* AuthViewController.swift */,
 			);
 			path = "View Controllers";
@@ -157,6 +159,7 @@
 				16CF915C2A03BAD300E3A122 /* ListTableViewViewModel.swift */,
 				16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */,
 				16E0EBBB2A1250E9001EF537 /* CollectionViewCellViewModel.swift */,
+				16E0EBBD2A126C5D001EF537 /* AddOrEditViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -297,7 +300,7 @@
 			files = (
 				16E0EA7A2A098101001EF537 /* OperationTypeExpensesItem.swift in Sources */,
 				16CF915D2A03BAD300E3A122 /* ListTableViewViewModel.swift in Sources */,
-				1616C31E291BCA56000C0043 /* AddTransactionVC.swift in Sources */,
+				1616C31E291BCA56000C0043 /* AddOrEditTransactionVC.swift in Sources */,
 				1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */,
 				165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */,
 				160E94D02941EC6B00838B21 /* AuthViewController.swift in Sources */,
@@ -308,6 +311,7 @@
 				16E0EBBA2A123F76001EF537 /* ListTableViewCellViewModel.swift in Sources */,
 				165021DE293E14FA003CEC30 /* FirestoreServise.swift in Sources */,
 				165021E4293E319D003CEC30 /* ListenerServise.swift in Sources */,
+				16E0EBBE2A126C5D001EF537 /* AddOrEditViewModel.swift in Sources */,
 				16E0EA782A096B59001EF537 /* CustomCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
