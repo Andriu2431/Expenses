@@ -16,14 +16,14 @@ class ListViewController: UIViewController {
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     private var listListener: ListenerRegistration?
-    private var viewModel: TableViewViewModelType?
+    private var viewModel: TableViewViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ListTableViewViewModel()
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
-        listListener = ListenerServise.shared.walletObserve(items: viewModel!.items, completion: { [weak self] result in
+        listListener = ListenerServise.shared.walletObserve(items: viewModel!.getAllItemsForListener(), completion: { [weak self] result in
             self?.updateUI(result)
         })
     }
@@ -42,8 +42,7 @@ class ListViewController: UIViewController {
     }
     
     private func updateConstaraint() {
-        let countOperationType = viewModel?.operationTypeItems.count ?? 0
-        collectionViewHeight.constant = countOperationType > 3 ? 180 : 90
+        collectionViewHeight.constant = viewModel?.calculateCollectionViewHeight() ?? 90
         contentViewHeight.constant = view.safeAreaLayoutGuide.layoutFrame.size.height + collectionViewHeight.constant
     }
     
@@ -63,7 +62,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.items.count ?? 0
+        return viewModel?.tableViewCellNumberOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,60 +71,31 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        guard let cellViewModel = viewModel?.getCellViewModel(indexPath: indexPath) else { return UITableViewCell() }
+        guard let cellViewModel = viewModel?.getTableViewCellViewModel(indexPath: indexPath) else { return UITableViewCell() }
         cell.viewModel = cellViewModel
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        UISwipeActionsConfiguration(actions: createSwipeActions(indexPath: indexPath))
+        UISwipeActionsConfiguration(actions: viewModel?.createSwipeActions(indexPath: indexPath, viewController: self) ?? [])
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let editVC = viewModel?.createEditViewController(indexPath: indexPath) else { return }
-        self.navigationController?.pushViewController(editVC, animated: true)
+        viewModel?.createEditViewController(indexPath: indexPath, viewController: self)
         tableView.deselectRow(at: indexPath, animated: false)
-    }
-    
-    private func createSwipeActions(indexPath: IndexPath) -> [UIContextualAction] {
-        let deleteAction = UIContextualAction(style: .normal, title: "Видалити") { [weak self] (action, view, handler) in
-            guard let self = self else { return }
-            self.deleteAllertController(indexPath: indexPath)
-        }
-        deleteAction.backgroundColor = .red
-        
-        let editAction = UIContextualAction(style: .normal, title: "Редагувати") { [weak self] (action, view, handler) in
-            guard let self = self, let editVC = self.viewModel?.createEditViewController(indexPath: indexPath)  else { return }
-            self.navigationController?.pushViewController(editVC, animated: true)
-        }
-        editAction.backgroundColor = .gray
-        
-        return [deleteAction, editAction]
-    }
-    
-    private func deleteAllertController(indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Підтвердіть!", message: "Ви дійсно хочете видалити цей елемент?", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "Так", style: .default) { [unowned self] action in
-            viewModel?.deleteTransaction(indexPath: indexPath)
-        }
-        let no = UIAlertAction(title: "Ні", style: .cancel)
-        
-        alert.addAction(yes)
-        alert.addAction(no)
-        self.present(alert, animated: true)
     }
 }
 
 extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel?.operationTypeItems.count ?? 0
+        viewModel?.collectionViewCellNumberOfRows() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CustomCollectionViewCell
-        guard let operationTypeItem = viewModel?.operationTypeItems[indexPath.row] else { return UICollectionViewCell() }
-        cell.configure(item: operationTypeItem)
+        guard let cellViewModel = viewModel?.getCollectioViewCellViewModel(indexPath: indexPath) else { return UICollectionViewCell() }
+        cell.viewModel = cellViewModel
         return cell
     }
     

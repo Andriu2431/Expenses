@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TableViewCellViewModelType {
+protocol TableViewCellViewModelProtocol {
     var sumTransactionText: String {get}
     var sumTransactionTextColor: UIColor {get}
     var dateTransaction: String {get}
@@ -15,7 +15,7 @@ protocol TableViewCellViewModelType {
     var operationType: String {get}
 }
 
-class ListTableViewCellViewModel: TableViewCellViewModelType {
+class ListTableViewCellViewModel: TableViewCellViewModelProtocol {
     
     private var item: ExpensesItem
     

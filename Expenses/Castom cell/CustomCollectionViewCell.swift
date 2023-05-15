@@ -12,9 +12,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var costLabel: UILabel!
     
-    func configure(item: OperationTypeExpensesItem) {
-        imageView.image = UIImage(named: item.iconName)
-        costLabel.textColor = item.expenses >= 0 ? .green : .red
-        costLabel.text = String(item.expenses)
+    var viewModel: CollectionViewCellViewModelProtocol? {
+        willSet(newViewModel) {
+            guard let viewModel = newViewModel else { return }
+            imageView.image = viewModel.image
+            costLabel.text = viewModel.sumTransactionText
+            costLabel.textColor = viewModel.sumTransactionTextColor
+        }
     }
 }

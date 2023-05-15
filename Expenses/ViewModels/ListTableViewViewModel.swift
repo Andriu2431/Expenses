@@ -7,14 +7,18 @@
 
 import UIKit
 
-protocol TableViewViewModelType {
-    var items: [ExpensesItem] {get}
-    var operationTypeItems: [OperationTypeExpensesItem] {get}
+protocol TableViewViewModelProtocol {
+    func tableViewCellNumberOfRows() -> Int
+    func collectionViewCellNumberOfRows() -> Int
     func setup(items: [ExpensesItem])
+    func getAllItemsForListener() -> [ExpensesItem]
     func currentBalanceCalculation() -> String
-    func createEditViewController(indexPath: IndexPath) -> AddTransactionVC
+    func calculateCollectionViewHeight() -> CGFloat
+    func createEditViewController(indexPath: IndexPath, viewController: UIViewController)
+    func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction]
     func deleteTransaction(indexPath: IndexPath)
-    func getCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelType?
+    func getTableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol?
+    func getCollectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol?
 }
 
 enum Operation: String, CaseIterable {
@@ -27,14 +31,24 @@ enum Operation: String, CaseIterable {
     case salary = "Зарплата"
 }
 
-class ListTableViewViewModel: TableViewViewModelType {
+class ListTableViewViewModel: TableViewViewModelProtocol {
     
-    var items = [ExpensesItem]()
-    var operationTypeItems = [OperationTypeExpensesItem]()
+    private var items = [ExpensesItem]()
+    private var operationTypeItems = [OperationTypeExpensesItem]()
     
     func setup(items: [ExpensesItem]) {
         self.items = items
         self.operationTypeItems = getOperationTypeItems()
+    }
+    
+    // MARK: List View Controller Methods
+    
+    func tableViewCellNumberOfRows() -> Int {
+        items.count
+    }
+    
+    func getAllItemsForListener() -> [ExpensesItem] {
+        items
     }
     
     func currentBalanceCalculation() -> String {
@@ -52,28 +66,62 @@ class ListTableViewViewModel: TableViewViewModelType {
         FirestoreServise.shared.deleteTransaction(itemId: items[indexPath.row].id)
     }
     
-    func createEditViewController(indexPath: IndexPath) -> AddTransactionVC {
+    func createEditViewController(indexPath: IndexPath, viewController: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let editVC = storyboard.instantiateViewController(withIdentifier: "detailVC") as! AddTransactionVC
         editVC.configure(item: items[indexPath.row])
-        return editVC
+        viewController.navigationController?.pushViewController(editVC, animated: true)
     }
     
-    func getCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelType? {
+    func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction] {
+        let deleteAction = UIContextualAction(style: .normal, title: "Видалити") { [weak self] (action, view, handler) in
+            guard let self = self else { return }
+            self.deleteAllertController(indexPath: indexPath, viewController: viewController)
+        }
+        deleteAction.backgroundColor = .red
+        
+        let editAction = UIContextualAction(style: .normal, title: "Редагувати") { [weak self] (action, view, handler) in
+            guard let self = self else { return }
+            self.createEditViewController(indexPath: indexPath, viewController: viewController)
+        }
+        editAction.backgroundColor = .gray
+        
+        return [deleteAction, editAction]
+    }
+    
+    func getTableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol? {
         let item = items[indexPath.row]
         return ListTableViewCellViewModel(item: item)
     }
     
+    // MARK: Collection View Methods
+    
+    func collectionViewCellNumberOfRows() -> Int {
+        operationTypeItems.count
+    }
+    
+    func getCollectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol? {
+        let item = operationTypeItems[indexPath.row]
+        return CollectionViewCellViewModel(item: item)
+    }
+    
+    func calculateCollectionViewHeight() -> CGFloat {
+        let countOperationType = collectionViewCellNumberOfRows()
+        return countOperationType > 3 ? 180 : 90
+    }
+    
+    // MARK: Private Methods
+    
     private func getOperationTypeItems() -> [OperationTypeExpensesItem] {
-        var collectionItemModel = [OperationTypeExpensesItem]()
+        var operationTypeItems = [OperationTypeExpensesItem]()
         
         Operation.allCases.forEach { operation in
             let expenses = calculateFor(operation: operation)
             if expenses != 0 {
-                collectionItemModel.append(OperationTypeExpensesItem(iconName: operation.rawValue, expenses: expenses))
+                operationTypeItems.append(OperationTypeExpensesItem(iconName: operation.rawValue, expenses: expenses))
             }
         }
-        return collectionItemModel
+        return operationTypeItems
     }
     
     private func calculateFor(operation: Operation) -> Int {
@@ -89,5 +137,17 @@ class ListTableViewViewModel: TableViewViewModelType {
         }
         
         return cost
+    }
+    
+    private func deleteAllertController(indexPath: IndexPath, viewController: UIViewController) {
+        let alert = UIAlertController(title: "Підтвердіть!", message: "Ви дійсно хочете видалити цей елемент?", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Так", style: .default) { [unowned self] action in
+            deleteTransaction(indexPath: indexPath)
+        }
+        let no = UIAlertAction(title: "Ні", style: .cancel)
+        
+        alert.addAction(yes)
+        alert.addAction(no)
+        viewController.present(alert, animated: true)
     }
 }
