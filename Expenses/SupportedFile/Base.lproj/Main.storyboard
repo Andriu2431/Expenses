@@ -297,6 +297,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="gd7-95-iEy" id="dEx-AK-aTj"/>
+                        <outlet property="collectionViewHeight" destination="KBG-wb-GyW" id="Wv6-XQ-530"/>
                         <outlet property="contentViewHeight" destination="lay-EE-lIs" id="e1p-zM-zI8"/>
                         <outlet property="tableView" destination="7M7-mL-DMt" id="FQq-SI-RFM"/>
                     </connections>

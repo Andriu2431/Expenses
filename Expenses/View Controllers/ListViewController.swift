@@ -13,6 +13,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     private var listListener: ListenerRegistration?
     var viewModel: ListViewModelProtocol?
@@ -27,21 +28,23 @@ class ListViewController: UIViewController {
         })
     }
     
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        contentViewHeight.constant = view.safeAreaLayoutGuide.layoutFrame.size.height + collectionView.frame.height
-    }
-    
     private func updateUI(_ result: Result<[ExpensesItem], Error>) {
         switch result {
         case .success(let success):
             viewModel?.setup(items: success.sorted(by: { $0.dateTransaction > $1.dateTransaction }))
             title = viewModel?.currentBalanceCalculation()
+            updateConstaraint()
             tableView.reloadData()
             collectionView.reloadData()
         case .failure(let failure):
             print(failure.localizedDescription)
         }
+    }
+    
+    private func updateConstaraint() {
+        let countOperationType = viewModel?.operationTypeItems.count ?? 0
+        collectionViewHeight.constant = countOperationType > 3 ? collectionViewHeight.constant : collectionViewHeight.constant / 2
+        contentViewHeight.constant = view.safeAreaLayoutGuide.layoutFrame.size.height + collectionViewHeight.constant
     }
     
     deinit {
