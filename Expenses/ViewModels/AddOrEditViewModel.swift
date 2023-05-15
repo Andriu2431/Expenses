@@ -13,21 +13,25 @@ protocol AddOrEditViewModelProtocol {
     var description: String {get}
     var operationType: String {get}
     var operation: Int {get}
+    var selectedOperationType: Operation {get set}
     func isItem() -> Bool
-    func saveTransaction(description: String, sum: Int, operation: Int, type: String, date: Date)
-    func updateTransaction(description: String, sum: Int, operation: Int, type: String, date: Date)
+    func saveTransaction(description: String, sum: Int, operation: Int, date: Date)
+    func updateTransaction(description: String, sum: Int, operation: Int, date: Date)
 }
 
 class AddOrEditViewModel: AddOrEditViewModelProtocol {
     
     var item: ExpensesItem?
+    var selectedOperationType: Operation
     
     init(item: ExpensesItem) {
         self.item = item
+        self.selectedOperationType = Operation(rawValue: item.operationType) ?? .product
     }
     
     init() {
         self.item = nil
+        self.selectedOperationType = .product
     }
     
     var sumTransactionText: String {
@@ -58,19 +62,19 @@ class AddOrEditViewModel: AddOrEditViewModelProtocol {
         }
     }
     
-    func saveTransaction(description: String, sum: Int, operation: Int, type: String, date: Date) {
+    func saveTransaction(description: String, sum: Int, operation: Int, date: Date) {
         FirestoreServise.shared.saveTransactionWith(description: description,
                                                     sum: sum,
                                                     operation: operation,
-                                                    type: type,
+                                                    type: selectedOperationType.rawValue,
                                                     date: date)
     }
     
-    func updateTransaction(description: String, sum: Int, operation: Int, type: String, date: Date) {
+    func updateTransaction(description: String, sum: Int, operation: Int, date: Date) {
         FirestoreServise.shared.updateTransaction(description: description,
                                                   sum: sum,
                                                   operation: operation,
-                                                  type: type,
+                                                  type: selectedOperationType.rawValue,
                                                   date: date,
                                                   id: item?.id ?? "")
     }

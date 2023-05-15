@@ -18,7 +18,6 @@ class AddOrEditTransactionVC: UIViewController {
     @IBOutlet weak var operationTypePicker: UIPickerView!
     
     var viewModel: AddOrEditViewModelProtocol?
-    private var selectedOperationType: Operation = .product
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +76,7 @@ class AddOrEditTransactionVC: UIViewController {
         sumTransaction.text = viewModel.sumTransactionText
         operation.selectedSegmentIndex = viewModel.operation
         changeColorSegmentedControl()
-        selectedOperationType = Operation(rawValue: viewModel.operationType) ?? .product
-        operationTypePicker.selectRow(Operation.allCases.firstIndex(of: selectedOperationType) ?? 0, inComponent: 0, animated: true)
+        operationTypePicker.selectRow(Operation.allCases.firstIndex(of: viewModel.selectedOperationType) ?? 0, inComponent: 0, animated: true)
         datePicker.date = viewModel.dateTransaction
         saveButton.isHidden = true
         updateButton.isHidden = false
@@ -105,7 +103,6 @@ class AddOrEditTransactionVC: UIViewController {
         viewModel?.saveTransaction(description: descriptionTextField.text ?? "",
                                    sum: sum,
                                    operation: operation.selectedSegmentIndex,
-                                   type: selectedOperationType.rawValue,
                                    date: datePicker.date)
         self.navigationController?.popViewController(animated: true)
     }
@@ -119,7 +116,6 @@ class AddOrEditTransactionVC: UIViewController {
         viewModel?.updateTransaction(description: descriptionTextField.text ?? "",
                                      sum: sum,
                                      operation: operation.selectedSegmentIndex,
-                                     type: selectedOperationType.rawValue,
                                      date: datePicker.date)
         self.navigationController?.popViewController(animated: true)
     }
@@ -146,6 +142,6 @@ extension AddOrEditTransactionVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedOperationType = Operation.allCases[row]
+        viewModel?.selectedOperationType = Operation.allCases[row]
     }
 }
