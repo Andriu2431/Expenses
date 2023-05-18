@@ -14,14 +14,15 @@ protocol AddOrEditViewModelProtocol {
     var operationType: String {get}
     var operation: Int {get}
     var selectedOperationType: Operation {get set}
-    func isItem() -> Bool
+    var title: String {get}
+    var isSave: Bool {get}
     func saveTransaction(description: String, sum: Int, operation: Int, date: Date)
     func updateTransaction(description: String, sum: Int, operation: Int, date: Date)
 }
 
-class AddOrEditViewModel: AddOrEditViewModelProtocol {
+class EditTransactionViewModel: AddOrEditViewModelProtocol {
     
-    var item: ExpensesItem?
+    private var item: ExpensesItem
     var selectedOperationType: Operation
     
     init(item: ExpensesItem) {
@@ -29,45 +30,36 @@ class AddOrEditViewModel: AddOrEditViewModelProtocol {
         self.selectedOperationType = Operation(rawValue: item.operationType) ?? .product
     }
     
-    init() {
-        self.item = nil
-        self.selectedOperationType = .product
+    var title: String {
+        "Редагування"
     }
     
     var sumTransactionText: String {
-        String(item?.sumTransaction ?? 0)
+        String(item.sumTransaction)
     }
     
     var dateTransaction: Date {
-        item?.dateTransaction ?? Date()
+        item.dateTransaction
     }
     
     var description: String {
-        item?.description ?? ""
+        item.description
     }
     
     var operationType: String {
-        item?.operationType ?? ""
+        item.operationType
     }
     
     var operation: Int {
-        item?.operation ?? 0
+        item.operation
     }
     
-    func isItem() -> Bool {
-        if item != nil {
-            return true
-        } else {
-            return false
-        }
+    var isSave: Bool {
+        true
     }
     
     func saveTransaction(description: String, sum: Int, operation: Int, date: Date) {
-        FirestoreServise.shared.saveTransactionWith(description: description,
-                                                    sum: sum,
-                                                    operation: operation,
-                                                    type: selectedOperationType.rawValue,
-                                                    date: date)
+        fatalError()
     }
     
     func updateTransaction(description: String, sum: Int, operation: Int, date: Date) {
@@ -76,6 +68,6 @@ class AddOrEditViewModel: AddOrEditViewModelProtocol {
                                                   operation: operation,
                                                   type: selectedOperationType.rawValue,
                                                   date: date,
-                                                  id: item?.id ?? "")
+                                                  id: item.id)
     }
 }

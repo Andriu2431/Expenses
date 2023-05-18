@@ -289,27 +289,23 @@
                     </view>
                     <navigationItem key="navigationItem" title="0" id="Ov0-LE-LfL">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" title="Залишок:" id="3nW-h3-caa"/>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="8o8-FO-2Ik">
-                            <connections>
-                                <segue destination="BxH-Vq-C4U" kind="show" identifier="segue" id="asd-MI-Q4Y"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="gd7-95-iEy" id="dEx-AK-aTj"/>
                         <outlet property="collectionViewHeight" destination="KBG-wb-GyW" id="Wv6-XQ-530"/>
                         <outlet property="contentViewHeight" destination="lay-EE-lIs" id="e1p-zM-zI8"/>
                         <outlet property="tableView" destination="7M7-mL-DMt" id="FQq-SI-RFM"/>
+                        <segue destination="BxH-Vq-C4U" kind="show" id="Bu2-SP-n6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2808.6956521739135" y="134.59821428571428"/>
         </scene>
-        <!--Add Or Edit TransactionVC-->
+        <!--Detail TrasactionVC-->
         <scene sceneID="UdN-bz-dvK">
             <objects>
-                <viewController storyboardIdentifier="AddOrEditVC" id="BxH-Vq-C4U" customClass="AddOrEditTransactionVC" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailTransactionVc" id="BxH-Vq-C4U" customClass="DetailTrasactionVC" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="49F-59-1Gm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

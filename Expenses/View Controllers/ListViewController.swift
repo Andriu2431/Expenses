@@ -23,9 +23,14 @@ class ListViewController: UIViewController {
         viewModel = ListTableViewViewModel()
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTransactionTapped))
         listListener = ListenerServise.shared.walletObserve(items: viewModel!.getAllItemsForListener(), completion: { [weak self] result in
             self?.updateUI(result)
         })
+    }
+    
+    @objc func addTransactionTapped() {
+        viewModel?.createAddViewController(viewController: self)
     }
     
     private func updateUI(_ result: Result<[ExpensesItem], Error>) {

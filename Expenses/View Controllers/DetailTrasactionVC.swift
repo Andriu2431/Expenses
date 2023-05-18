@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddOrEditTransactionVC: UIViewController {
+class DetailTrasactionVC: UIViewController {
 
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var sumTransaction: UITextField!
@@ -21,10 +21,9 @@ class AddOrEditTransactionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if viewModel == nil {
-            viewModel = AddOrEditViewModel()
-        }
         setup()
+        changeColorSegmentedControl()
+        addNotificationObserver()
         operation.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
     }
@@ -34,52 +33,19 @@ class AddOrEditTransactionVC: UIViewController {
         removeNotificationObserver()
     }
     
-    private func removeNotificationObserver() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    private func addNotificationObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
     private func setup() {
+        guard let viewModel = viewModel else { return }
+        title = viewModel.title
         operationTypePicker.delegate = self
         operationTypePicker.dataSource = self
         datePicker.contentHorizontalAlignment = .center
-        updateButton.isHidden = true
-        title = "Нова транзакція"
-        changeColorSegmentedControl()
-        addNotificationObserver()
-        setupUI()
-    }
-    
-    private func setupUI() {
-        guard let viewModel = viewModel, viewModel.isItem() == true else { return }
-        title = "Редагування"
         descriptionTextField.text = viewModel.description
         sumTransaction.text = viewModel.sumTransactionText
         operation.selectedSegmentIndex = viewModel.operation
-        changeColorSegmentedControl()
         operationTypePicker.selectRow(Operation.allCases.firstIndex(of: viewModel.selectedOperationType) ?? 0, inComponent: 0, animated: true)
         datePicker.date = viewModel.dateTransaction
-        saveButton.isHidden = true
-        updateButton.isHidden = false
+        saveButton.isHidden = viewModel.isSave
+        updateButton.isHidden = !viewModel.isSave
     }
 
     
@@ -128,7 +94,7 @@ class AddOrEditTransactionVC: UIViewController {
     }
 }
 
-extension AddOrEditTransactionVC: UIPickerViewDelegate, UIPickerViewDataSource {
+extension DetailTrasactionVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }

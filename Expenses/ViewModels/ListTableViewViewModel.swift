@@ -15,6 +15,7 @@ protocol TableViewViewModelProtocol {
     func currentBalanceCalculation() -> String
     func calculateCollectionViewHeight() -> CGFloat
     func createEditViewController(indexPath: IndexPath, viewController: UIViewController)
+    func createAddViewController(viewController: UIViewController)
     func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction]
     func deleteTransaction(indexPath: IndexPath)
     func tableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol?
@@ -68,10 +69,18 @@ class ListTableViewViewModel: TableViewViewModelProtocol {
     
     func createEditViewController(indexPath: IndexPath, viewController: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let editVC = storyboard.instantiateViewController(withIdentifier: "AddOrEditVC") as! AddOrEditTransactionVC
-        let editViewModel = AddOrEditViewModel(item: items[indexPath.row])
+        let editVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
+        let editViewModel = EditTransactionViewModel(item: items[indexPath.row])
         editVC.viewModel = editViewModel
         viewController.navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    func createAddViewController(viewController: UIViewController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let addVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
+        let addViewModel = AddTrnsactionViewModel()
+        addVC.viewModel = addViewModel
+        viewController.navigationController?.pushViewController(addVC, animated: true)
     }
     
     func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction] {
