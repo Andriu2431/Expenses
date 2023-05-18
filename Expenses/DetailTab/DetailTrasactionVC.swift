@@ -17,7 +17,7 @@ class DetailTrasactionVC: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var operationTypePicker: UIPickerView!
     
-    var viewModel: AddOrEditViewModelProtocol?
+    var viewModel: DetailViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()

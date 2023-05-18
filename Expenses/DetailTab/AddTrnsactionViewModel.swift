@@ -7,37 +7,15 @@
 
 import Foundation
 
-class AddTrnsactionViewModel: AddOrEditViewModelProtocol {
+class AddTrnsactionViewModel: DetailViewModelProtocol {
 
     var selectedOperationType: Operation = .product
-    
-    var title: String {
-        "Нова транзакція"
-    }
-    
-    var sumTransactionText: String {
-        ""
-    }
-    
-    var dateTransaction: Date {
-        Date()
-    }
-    
-    var description: String {
-        ""
-    }
-    
-    var operationType: String {
-        Operation.product.rawValue
-    }
-    
-    var operation: Int {
-        1
-    }
-    
-    var isSave: Bool {
-        false
-    }
+    var title = "Нова транзакція"
+    var sumTransactionText = ""
+    var dateTransaction = Date()
+    var description = ""
+    var operation = 1
+    var isSave = false
     
     func saveTransaction(description: String, sum: Int, operation: Int, date: Date) {
         FirestoreServise.shared.saveTransactionWith(description: description,

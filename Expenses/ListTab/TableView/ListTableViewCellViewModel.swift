@@ -7,14 +7,6 @@
 
 import UIKit
 
-protocol TableViewCellViewModelProtocol: AnyObject {
-    var sumTransactionText: String {get}
-    var sumTransactionTextColor: UIColor {get}
-    var dateTransaction: String {get}
-    var description: String {get}
-    var operationType: String {get}
-}
-
 class ListTableViewCellViewModel: TableViewCellViewModelProtocol {
     
     private var item: ExpensesItem

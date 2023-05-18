@@ -7,20 +7,7 @@
 
 import Foundation
 
-protocol AddOrEditViewModelProtocol {
-    var sumTransactionText: String {get}
-    var dateTransaction: Date {get}
-    var description: String {get}
-    var operationType: String {get}
-    var operation: Int {get}
-    var selectedOperationType: Operation {get set}
-    var title: String {get}
-    var isSave: Bool {get}
-    func saveTransaction(description: String, sum: Int, operation: Int, date: Date)
-    func updateTransaction(description: String, sum: Int, operation: Int, date: Date)
-}
-
-class EditTransactionViewModel: AddOrEditViewModelProtocol {
+class EditTransactionViewModel: DetailViewModelProtocol {
     
     private var item: ExpensesItem
     var selectedOperationType: Operation

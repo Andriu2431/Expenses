@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol CollectionViewCellViewModelProtocol: AnyObject {
-    var image: UIImage {get}
-    var sumTransactionText: String {get}
-    var sumTransactionTextColor: UIColor {get}
-}
-
 class CollectionViewCellViewModel: CollectionViewCellViewModelProtocol {
     
     private var item: OperationTypeExpensesItem

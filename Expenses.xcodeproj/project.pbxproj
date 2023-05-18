@@ -29,6 +29,10 @@
 		16E0EBBE2A126C5D001EF537 /* EditTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBBD2A126C5D001EF537 /* EditTransactionViewModel.swift */; };
 		16E0EBC02A12C56C001EF537 /* AddTrnsactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBBF2A12C56C001EF537 /* AddTrnsactionViewModel.swift */; };
 		16E0EBC32A12D554001EF537 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBC22A12D554001EF537 /* ExtensionViewController.swift */; };
+		16E0ECF22A1651EA001EF537 /* TableViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0ECF12A1651EA001EF537 /* TableViewViewModelProtocol.swift */; };
+		16E0ECF42A165237001EF537 /* TableViewCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0ECF32A165237001EF537 /* TableViewCellViewModelProtocol.swift */; };
+		16E0ECF62A16525A001EF537 /* CollectionViewCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0ECF52A16525A001EF537 /* CollectionViewCellViewModelProtocol.swift */; };
+		16E0ECF82A165275001EF537 /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0ECF72A165275001EF537 /* DetailViewModelProtocol.swift */; };
 		B07EA0B81867D214D73D6D9C /* Pods_Expenses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA5001DCB3EF7811D0C8D7B /* Pods_Expenses.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,10 @@
 		16E0EBBD2A126C5D001EF537 /* EditTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewModel.swift; sourceTree = "<group>"; };
 		16E0EBBF2A12C56C001EF537 /* AddTrnsactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrnsactionViewModel.swift; sourceTree = "<group>"; };
 		16E0EBC22A12D554001EF537 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
+		16E0ECF12A1651EA001EF537 /* TableViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModelProtocol.swift; sourceTree = "<group>"; };
+		16E0ECF32A165237001EF537 /* TableViewCellViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModelProtocol.swift; sourceTree = "<group>"; };
+		16E0ECF52A16525A001EF537 /* CollectionViewCellViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellViewModelProtocol.swift; sourceTree = "<group>"; };
+		16E0ECF72A165275001EF537 /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		9EA5001DCB3EF7811D0C8D7B /* Pods_Expenses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expenses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A240BB348F73E242707A0880 /* Pods-Expenses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expenses.debug.xcconfig"; path = "Target Support Files/Pods-Expenses/Pods-Expenses.debug.xcconfig"; sourceTree = "<group>"; };
 		E16E26649EB2C57BCC63F423 /* Pods-Expenses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expenses.release.xcconfig"; path = "Target Support Files/Pods-Expenses/Pods-Expenses.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,10 +104,11 @@
 		1616C306291BBF8C000C0043 /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
-				16D88BD0294081D400E5C30A /* View Controllers */,
-				16D88BD12940820E00E5C30A /* Castom cell */,
-				16E0EA7B2A0A3BE4001EF537 /* ViewModels */,
+				16D88BD0294081D400E5C30A /* Auth */,
+				16E0ECEB2A164E57001EF537 /* ListTab */,
+				16E0ECEC2A164E71001EF537 /* DetailTab */,
 				16D88BD22940821800E5C30A /* Model */,
+				16E0ECF02A1651C7001EF537 /* Protocols */,
 				16D88BD32940822A00E5C30A /* FirebaseServicse */,
 				16E0EBC12A12D528001EF537 /* Extensions */,
 				16D88BD42940824E00E5C30A /* SupportedFile */,
@@ -109,23 +118,12 @@
 			path = Expenses;
 			sourceTree = "<group>";
 		};
-		16D88BD0294081D400E5C30A /* View Controllers */ = {
+		16D88BD0294081D400E5C30A /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
-				1616C31D291BCA56000C0043 /* DetailTrasactionVC.swift */,
 				160E94CF2941EC6B00838B21 /* AuthViewController.swift */,
 			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		16D88BD12940820E00E5C30A /* Castom cell */ = {
-			isa = PBXGroup;
-			children = (
-				1616C31B291BC295000C0043 /* CustomTableViewCell.swift */,
-				16E0EA772A096B59001EF537 /* CustomCollectionViewCell.swift */,
-			);
-			path = "Castom cell";
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		16D88BD22940821800E5C30A /* Model */ = {
@@ -158,24 +156,62 @@
 			path = SupportedFile;
 			sourceTree = "<group>";
 		};
-		16E0EA7B2A0A3BE4001EF537 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				16CF915C2A03BAD300E3A122 /* ListTableViewViewModel.swift */,
-				16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */,
-				16E0EBBB2A1250E9001EF537 /* CollectionViewCellViewModel.swift */,
-				16E0EBBD2A126C5D001EF537 /* EditTransactionViewModel.swift */,
-				16E0EBBF2A12C56C001EF537 /* AddTrnsactionViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		16E0EBC12A12D528001EF537 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				16E0EBC22A12D554001EF537 /* ExtensionViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		16E0ECEB2A164E57001EF537 /* ListTab */ = {
+			isa = PBXGroup;
+			children = (
+				1616C30B291BBF8C000C0043 /* ListViewController.swift */,
+				16CF915C2A03BAD300E3A122 /* ListTableViewViewModel.swift */,
+				16E0ECEE2A164F3F001EF537 /* TableView */,
+				16E0ECEF2A164F4A001EF537 /* CollectionView */,
+			);
+			path = ListTab;
+			sourceTree = "<group>";
+		};
+		16E0ECEC2A164E71001EF537 /* DetailTab */ = {
+			isa = PBXGroup;
+			children = (
+				1616C31D291BCA56000C0043 /* DetailTrasactionVC.swift */,
+				16E0EBBD2A126C5D001EF537 /* EditTransactionViewModel.swift */,
+				16E0EBBF2A12C56C001EF537 /* AddTrnsactionViewModel.swift */,
+			);
+			path = DetailTab;
+			sourceTree = "<group>";
+		};
+		16E0ECEE2A164F3F001EF537 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */,
+				1616C31B291BC295000C0043 /* CustomTableViewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		16E0ECEF2A164F4A001EF537 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				16E0EBBB2A1250E9001EF537 /* CollectionViewCellViewModel.swift */,
+				16E0EA772A096B59001EF537 /* CustomCollectionViewCell.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		16E0ECF02A1651C7001EF537 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				16E0ECF12A1651EA001EF537 /* TableViewViewModelProtocol.swift */,
+				16E0ECF32A165237001EF537 /* TableViewCellViewModelProtocol.swift */,
+				16E0ECF52A16525A001EF537 /* CollectionViewCellViewModelProtocol.swift */,
+				16E0ECF72A165275001EF537 /* DetailViewModelProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		17AF5507E9DA2976C2552D7C /* Pods */ = {
@@ -313,10 +349,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				16E0EA7A2A098101001EF537 /* OperationTypeExpensesItem.swift in Sources */,
+				16E0ECF62A16525A001EF537 /* CollectionViewCellViewModelProtocol.swift in Sources */,
 				16E0EBC02A12C56C001EF537 /* AddTrnsactionViewModel.swift in Sources */,
 				16CF915D2A03BAD300E3A122 /* ListTableViewViewModel.swift in Sources */,
 				1616C31E291BCA56000C0043 /* DetailTrasactionVC.swift in Sources */,
 				1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */,
+				16E0ECF42A165237001EF537 /* TableViewCellViewModelProtocol.swift in Sources */,
 				165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */,
 				160E94D02941EC6B00838B21 /* AuthViewController.swift in Sources */,
 				1616C308291BBF8C000C0043 /* AppDelegate.swift in Sources */,
@@ -328,7 +366,9 @@
 				165021DE293E14FA003CEC30 /* FirestoreServise.swift in Sources */,
 				165021E4293E319D003CEC30 /* ListenerServise.swift in Sources */,
 				16E0EBBE2A126C5D001EF537 /* EditTransactionViewModel.swift in Sources */,
+				16E0ECF22A1651EA001EF537 /* TableViewViewModelProtocol.swift in Sources */,
 				16E0EA782A096B59001EF537 /* CustomCollectionViewCell.swift in Sources */,
+				16E0ECF82A165275001EF537 /* DetailViewModelProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
