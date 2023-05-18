@@ -30,7 +30,7 @@ class ListViewController: UIViewController {
     }
     
     @objc func addTransactionTapped() {
-        viewModel?.createAddViewController(viewController: self)
+        createAddViewController()
     }
     
     private func updateUI(_ result: Result<[ExpensesItem], Error>) {
@@ -44,6 +44,14 @@ class ListViewController: UIViewController {
         case .failure(let failure):
             print(failure.localizedDescription)
         }
+    }
+    
+    private func createAddViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let addVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
+        let addViewModel = viewModel?.createAddTransactionViewModel()
+        addVC.viewModel = addViewModel
+        self.navigationController?.pushViewController(addVC, animated: true)
     }
     
     private func updateConstaraint() {
@@ -82,12 +90,49 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        UISwipeActionsConfiguration(actions: viewModel?.createSwipeActions(indexPath: indexPath, viewController: self) ?? [])
+        UISwipeActionsConfiguration(actions: createSwipeActions(indexPath: indexPath))
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.createEditViewController(indexPath: indexPath, viewController: self)
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        createEditViewController(indexPath: indexPath)
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    private func createEditViewController(indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
+        let editViewModel = viewModel?.createEditTransactionViewModel(indexPath: indexPath)
+        editVC.viewModel = editViewModel
+        self.navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    private func createSwipeActions(indexPath: IndexPath) -> [UIContextualAction] {
+        let deleteAction = UIContextualAction(style: .normal, title: "Видалити") { [weak self] (action, view, handler) in
+            guard let self = self else { return }
+            self.deleteAllertController(indexPath: indexPath)
+        }
+        deleteAction.backgroundColor = .red
+        
+        let editAction = UIContextualAction(style: .normal, title: "Редагувати") { [weak self] (action, view, handler) in
+            guard let self = self else { return }
+            self.createEditViewController(indexPath: indexPath)
+        }
+        editAction.backgroundColor = .gray
+        
+        return [deleteAction, editAction]
+    }
+    
+    private func deleteAllertController(indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Підтвердіть!", message: "Ви дійсно хочете видалити цей елемент?", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Так", style: .default) { [weak self] action in
+            guard let self = self else { return }
+            self.viewModel?.deleteTransaction(indexPath: indexPath)
+        }
+        let no = UIAlertAction(title: "Ні", style: .cancel)
+        
+        alert.addAction(yes)
+        alert.addAction(no)
+        self.present(alert, animated: true)
     }
 }
 

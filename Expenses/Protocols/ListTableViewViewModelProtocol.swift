@@ -14,9 +14,8 @@ protocol ListTableViewViewModelProtocol {
     func getAllItemsForListener() -> [ExpensesItem]
     func currentBalanceCalculation() -> String
     func calculateCollectionViewHeight() -> CGFloat
-    func createEditViewController(indexPath: IndexPath, viewController: UIViewController)
-    func createAddViewController(viewController: UIViewController)
-    func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction]
+    func createEditTransactionViewModel(indexPath: IndexPath) -> DetailViewModelProtocol
+    func createAddTransactionViewModel() -> DetailViewModelProtocol
     func deleteTransaction(indexPath: IndexPath)
     func tableViewCellViewModel(indexPath: IndexPath) -> ListTableViewCellViewModelProtocol?
     func collectioViewCellViewModel(indexPath: IndexPath) -> ListCollectionViewCellViewModelProtocol?

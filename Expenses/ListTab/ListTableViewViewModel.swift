@@ -5,7 +5,7 @@
 //  Created by Andrii Malyk on 04.05.2023.
 //
 
-import UIKit
+import Foundation
 
 enum Operation: String, CaseIterable {
     case product = "Продукти"
@@ -52,41 +52,16 @@ class ListTableViewViewModel: ListTableViewViewModelProtocol {
         FirestoreServise.shared.deleteTransaction(itemId: items[indexPath.row].id)
     }
     
-    func createEditViewController(indexPath: IndexPath, viewController: UIViewController) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let editVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
-        let editViewModel = EditTransactionViewModel(item: items[indexPath.row])
-        editVC.viewModel = editViewModel
-        viewController.navigationController?.pushViewController(editVC, animated: true)
+    func createEditTransactionViewModel(indexPath: IndexPath) -> DetailViewModelProtocol {
+        return EditTransactionViewModel(item: items[indexPath.row])
     }
     
-    func createAddViewController(viewController: UIViewController) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let addVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
-        let addViewModel = AddTrnsactionViewModel()
-        addVC.viewModel = addViewModel
-        viewController.navigationController?.pushViewController(addVC, animated: true)
-    }
-    
-    func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction] {
-        let deleteAction = UIContextualAction(style: .normal, title: "Видалити") { [weak self] (action, view, handler) in
-            guard let self = self else { return }
-            self.deleteAllertController(indexPath: indexPath, viewController: viewController)
-        }
-        deleteAction.backgroundColor = .red
-        
-        let editAction = UIContextualAction(style: .normal, title: "Редагувати") { [weak self] (action, view, handler) in
-            guard let self = self else { return }
-            self.createEditViewController(indexPath: indexPath, viewController: viewController)
-        }
-        editAction.backgroundColor = .gray
-        
-        return [deleteAction, editAction]
+    func createAddTransactionViewModel() -> DetailViewModelProtocol {
+        return AddTrnsactionViewModel()
     }
     
     func tableViewCellViewModel(indexPath: IndexPath) -> ListTableViewCellViewModelProtocol? {
-        let item = items[indexPath.row]
-        return ListTableViewCellViewModel(item: item)
+        return ListTableViewCellViewModel(item: items[indexPath.row])
     }
     
     // MARK: Collection View Methods
@@ -96,8 +71,7 @@ class ListTableViewViewModel: ListTableViewViewModelProtocol {
     }
     
     func collectioViewCellViewModel(indexPath: IndexPath) -> ListCollectionViewCellViewModelProtocol? {
-        let item = operationTypeItems[indexPath.row]
-        return ListCollectionViewCellViewModel(item: item)
+        return ListCollectionViewCellViewModel(item: operationTypeItems[indexPath.row])
     }
     
     func calculateCollectionViewHeight() -> CGFloat {
@@ -132,17 +106,5 @@ class ListTableViewViewModel: ListTableViewViewModelProtocol {
         }
         
         return cost
-    }
-    
-    private func deleteAllertController(indexPath: IndexPath, viewController: UIViewController) {
-        let alert = UIAlertController(title: "Підтвердіть!", message: "Ви дійсно хочете видалити цей елемент?", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "Так", style: .default) { [unowned self] action in
-            deleteTransaction(indexPath: indexPath)
-        }
-        let no = UIAlertAction(title: "Ні", style: .cancel)
-        
-        alert.addAction(yes)
-        alert.addAction(no)
-        viewController.present(alert, animated: true)
     }
 }
