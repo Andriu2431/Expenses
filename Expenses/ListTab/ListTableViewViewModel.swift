@@ -17,7 +17,7 @@ enum Operation: String, CaseIterable {
     case salary = "Зарплата"
 }
 
-class ListTableViewViewModel: TableViewViewModelProtocol {
+class ListTableViewViewModel: ListTableViewViewModelProtocol {
     
     private var items = [ExpensesItem]()
     private var operationTypeItems = [OperationTypeExpensesItem]()
@@ -84,7 +84,7 @@ class ListTableViewViewModel: TableViewViewModelProtocol {
         return [deleteAction, editAction]
     }
     
-    func tableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol? {
+    func tableViewCellViewModel(indexPath: IndexPath) -> ListTableViewCellViewModelProtocol? {
         let item = items[indexPath.row]
         return ListTableViewCellViewModel(item: item)
     }
@@ -95,9 +95,9 @@ class ListTableViewViewModel: TableViewViewModelProtocol {
         operationTypeItems.count
     }
     
-    func collectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol? {
+    func collectioViewCellViewModel(indexPath: IndexPath) -> ListCollectionViewCellViewModelProtocol? {
         let item = operationTypeItems[indexPath.row]
-        return CollectionViewCellViewModel(item: item)
+        return ListCollectionViewCellViewModel(item: item)
     }
     
     func calculateCollectionViewHeight() -> CGFloat {

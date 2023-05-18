@@ -28,6 +28,4 @@ class AddTrnsactionViewModel: DetailViewModelProtocol {
     func updateTransaction(description: String, sum: Int, operation: Int, date: Date) {
         fatalError()
     }
-    
-
 }

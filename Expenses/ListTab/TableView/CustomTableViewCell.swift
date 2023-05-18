@@ -15,14 +15,14 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var opetaionType: UILabel!
     
-    weak var viewModel: TableViewCellViewModelProtocol? {
+    weak var viewModel: ListTableViewCellViewModelProtocol? {
         willSet(newViewModel) {
             guard let viewModel = newViewModel else { return }
             descriptionLabel.text = viewModel.description
             dateLabel.text = viewModel.dateTransaction
             opetaionType.text = viewModel.operationType
             cost.text = viewModel.sumTransactionText
-            cost.textColor = viewModel.sumTransactionTextColor
+            cost.textColor = viewModel.operation == 0 ? .green : .red
         }
     }
     

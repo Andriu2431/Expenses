@@ -16,7 +16,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     private var listListener: ListenerRegistration?
-    private var viewModel: TableViewViewModelProtocol?
+    private var viewModel: ListTableViewViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()

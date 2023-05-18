@@ -5,9 +5,9 @@
 //  Created by Andrii Malyk on 15.05.2023.
 //
 
-import UIKit
+import Foundation
 
-class ListTableViewCellViewModel: TableViewCellViewModelProtocol {
+class ListTableViewCellViewModel: ListTableViewCellViewModelProtocol {
     
     private var item: ExpensesItem
     
@@ -24,13 +24,8 @@ class ListTableViewCellViewModel: TableViewCellViewModelProtocol {
         }
     }
     
-    var sumTransactionTextColor: UIColor {
-        switch item.operation {
-        case 0:
-            return #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
-        default:
-            return .red
-        }
+    var operation: Int {
+        item.operation
     }
     
     var dateTransaction: String {

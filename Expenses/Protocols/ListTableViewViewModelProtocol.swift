@@ -1,5 +1,5 @@
 //
-//  TableViewViewModelProtocol.swift
+//  ListTableViewViewModelProtocol.swift
 //  Expenses
 //
 //  Created by Andrii Malyk on 18.05.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TableViewViewModelProtocol {
+protocol ListTableViewViewModelProtocol {
     func tableViewCellNumberOfRows() -> Int
     func collectionViewCellNumberOfRows() -> Int
     func setup(items: [ExpensesItem])
@@ -18,6 +18,6 @@ protocol TableViewViewModelProtocol {
     func createAddViewController(viewController: UIViewController)
     func createSwipeActions(indexPath: IndexPath, viewController: UIViewController) -> [UIContextualAction]
     func deleteTransaction(indexPath: IndexPath)
-    func tableViewCellViewModel(indexPath: IndexPath) -> TableViewCellViewModelProtocol?
-    func collectioViewCellViewModel(indexPath: IndexPath) -> CollectionViewCellViewModelProtocol?
+    func tableViewCellViewModel(indexPath: IndexPath) -> ListTableViewCellViewModelProtocol?
+    func collectioViewCellViewModel(indexPath: IndexPath) -> ListCollectionViewCellViewModelProtocol?
 }
