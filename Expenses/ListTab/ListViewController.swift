@@ -17,10 +17,12 @@ class ListViewController: UIViewController {
     
     private var listListener: ListenerRegistration?
     private var viewModel: ListTableViewViewModelProtocol?
+    private var isSelectedOperation = false
+    private var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ListTableViewViewModel()
+        viewModel = ListAllOperationViewModel()
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTransactionTapped))
@@ -39,6 +41,9 @@ class ListViewController: UIViewController {
             viewModel?.setup(items: success.sorted(by: { $0.dateTransaction > $1.dateTransaction }))
             title = viewModel?.currentBalanceCalculation()
             updateConstaraint()
+            if let selectedIndexPath {
+                filtrationByOperations(indexPath: selectedIndexPath, selected: isSelectedOperation)
+            }
             tableView.reloadData()
             collectionView.reloadData()
         case .failure(let failure):
@@ -89,33 +94,27 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        UISwipeActionsConfiguration(actions: createSwipeActions(indexPath: indexPath))
-    }
-    
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         createEditViewController(indexPath: indexPath)
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    private func createEditViewController(indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let editVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
-        let editViewModel = viewModel?.createEditTransactionViewModel(indexPath: indexPath)
-        editVC.viewModel = editViewModel
-        self.navigationController?.pushViewController(editVC, animated: true)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        UISwipeActionsConfiguration(actions: createSwipeActions(indexPath: indexPath))
     }
     
     private func createSwipeActions(indexPath: IndexPath) -> [UIContextualAction] {
         let deleteAction = UIContextualAction(style: .normal, title: "Видалити") { [weak self] (action, view, handler) in
             guard let self = self else { return }
             self.deleteAllertController(indexPath: indexPath)
+            handler(true)
         }
         deleteAction.backgroundColor = .red
         
         let editAction = UIContextualAction(style: .normal, title: "Редагувати") { [weak self] (action, view, handler) in
             guard let self = self else { return }
             self.createEditViewController(indexPath: indexPath)
+            handler(true)
         }
         editAction.backgroundColor = .gray
         
@@ -134,6 +133,14 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(no)
         self.present(alert, animated: true)
     }
+    
+    private func createEditViewController(indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editVC = storyboard.instantiateViewController(withIdentifier: "DetailTransactionVc") as! DetailTrasactionVC
+        let editViewModel = viewModel?.createEditTransactionViewModel(indexPath: indexPath)
+        editVC.viewModel = editViewModel
+        self.navigationController?.pushViewController(editVC, animated: true)
+    }
 }
 
 extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -146,7 +153,24 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CustomCollectionViewCell
         guard let cellViewModel = viewModel?.collectioViewCellViewModel(indexPath: indexPath) else { return UICollectionViewCell() }
         cell.viewModel = cellViewModel
+        cell.layer.cornerRadius = 20
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // тут ми повінні перевірити - якщо є вибранйи алемент але ми тапаємо не по ньому, тоді нічого не робимо
+        if isSelectedOperation, selectedIndexPath != indexPath {
+            return
+        } else {
+            filtrationByOperations(indexPath: indexPath, selected: isSelectedOperation)
+        }
+    }
+    
+    private func filtrationByOperations(indexPath: IndexPath, selected: Bool) {
+        isSelectedOperation = !selected
+        selectedIndexPath = isSelectedOperation ? indexPath : nil
+        viewModel?.sortedBy(indexPath: indexPath, selected: isSelectedOperation)
+        collectionView.cellForItem(at: indexPath)?.backgroundColor = isSelectedOperation ? .lightGray : nil
+        tableView.reloadData()
+    }
 }

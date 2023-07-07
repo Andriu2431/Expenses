@@ -9,9 +9,9 @@ import Foundation
 
 class ListCollectionViewCellViewModel: ListCollectionViewCellViewModelProtocol {
     
-    private var item: OperationTypeExpensesItem
+    private var item: CollectionViewCellModel
     
-    init(item: OperationTypeExpensesItem) {
+    init(item: CollectionViewCellModel) {
         self.item = item
     }
     

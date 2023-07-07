@@ -19,4 +19,5 @@ protocol ListTableViewViewModelProtocol {
     func deleteTransaction(indexPath: IndexPath)
     func tableViewCellViewModel(indexPath: IndexPath) -> ListTableViewCellViewModelProtocol?
     func collectioViewCellViewModel(indexPath: IndexPath) -> ListCollectionViewCellViewModelProtocol?
+    func sortedBy(indexPath: IndexPath, selected: Bool)
 }
