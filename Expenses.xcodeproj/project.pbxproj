@@ -28,7 +28,6 @@
 		16E0EBBC2A1250E9001EF537 /* ListCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBBB2A1250E9001EF537 /* ListCollectionViewCellViewModel.swift */; };
 		16E0EBBE2A126C5D001EF537 /* EditTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBBD2A126C5D001EF537 /* EditTransactionViewModel.swift */; };
 		16E0EBC02A12C56C001EF537 /* AddTrnsactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBBF2A12C56C001EF537 /* AddTrnsactionViewModel.swift */; };
-		16E0EBC32A12D554001EF537 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBC22A12D554001EF537 /* ExtensionViewController.swift */; };
 		16E0ECF22A1651EA001EF537 /* ListTableViewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0ECF12A1651EA001EF537 /* ListTableViewViewModelProtocol.swift */; };
 		16E0ECF42A165237001EF537 /* ListTableViewCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0ECF32A165237001EF537 /* ListTableViewCellViewModelProtocol.swift */; };
 		16E0ECF62A16525A001EF537 /* ListCollectionViewCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0ECF52A16525A001EF537 /* ListCollectionViewCellViewModelProtocol.swift */; };
@@ -62,7 +61,6 @@
 		16E0EBBB2A1250E9001EF537 /* ListCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		16E0EBBD2A126C5D001EF537 /* EditTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewModel.swift; sourceTree = "<group>"; };
 		16E0EBBF2A12C56C001EF537 /* AddTrnsactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrnsactionViewModel.swift; sourceTree = "<group>"; };
-		16E0EBC22A12D554001EF537 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
 		16E0ECF12A1651EA001EF537 /* ListTableViewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewViewModelProtocol.swift; sourceTree = "<group>"; };
 		16E0ECF32A165237001EF537 /* ListTableViewCellViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCellViewModelProtocol.swift; sourceTree = "<group>"; };
 		16E0ECF52A16525A001EF537 /* ListCollectionViewCellViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCellViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				16D88BD22940821800E5C30A /* Model */,
 				16E0ECF02A1651C7001EF537 /* Protocols */,
 				16D88BD32940822A00E5C30A /* FirebaseServicse */,
-				16E0EBC12A12D528001EF537 /* Extensions */,
 				16D88BD42940824E00E5C30A /* SupportedFile */,
 				1616C315291BBF90000C0043 /* Info.plist */,
 				165021E1293E24AB003CEC30 /* GoogleService-Info.plist */,
@@ -154,14 +151,6 @@
 				1616C312291BBF90000C0043 /* LaunchScreen.storyboard */,
 			);
 			path = SupportedFile;
-			sourceTree = "<group>";
-		};
-		16E0EBC12A12D528001EF537 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				16E0EBC22A12D554001EF537 /* ExtensionViewController.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		16E0ECEB2A164E57001EF537 /* ListTab */ = {
@@ -358,7 +347,6 @@
 				165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */,
 				160E94D02941EC6B00838B21 /* AuthViewController.swift in Sources */,
 				1616C308291BBF8C000C0043 /* AppDelegate.swift in Sources */,
-				16E0EBC32A12D554001EF537 /* ExtensionViewController.swift in Sources */,
 				16E0EBBC2A1250E9001EF537 /* ListCollectionViewCellViewModel.swift in Sources */,
 				1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */,
 				1616C30A291BBF8C000C0043 /* SceneDelegate.swift in Sources */,

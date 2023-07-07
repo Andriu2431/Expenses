@@ -23,14 +23,8 @@ class DetailTrasactionVC: UIViewController {
         super.viewDidLoad()
         setup()
         changeColorSegmentedControl()
-        addNotificationObserver()
         operation.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeNotificationObserver()
     }
     
     private func setup() {
