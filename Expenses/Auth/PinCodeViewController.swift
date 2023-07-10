@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PinCodeViewController.swift
 //  Expenses
 //
 //  Created by Andrii Malyk on 08.12.2022.
@@ -8,13 +8,13 @@
 import UIKit
 import LocalAuthentication
 import KeychainSwift
+import FirebaseAuth
 
-class AuthViewController: UIViewController {
+class PinCodeViewController: UIViewController {
 
     @IBOutlet weak var touchOrFaceID: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var navigationListVC: UIViewController!
     let keychain = KeychainSwift()
     
     private var gradientLayer: CAGradientLayer! {
@@ -30,7 +30,6 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationListVC = self.storyboard?.instantiateViewController(withIdentifier: "NavigationListVC")
         passwordTextField.delegate = self
         passwordTextField.keyboardType = .numberPad
         passwordTextField.backgroundColor = .clear
@@ -55,7 +54,7 @@ class AuthViewController: UIViewController {
                 print(error)
             } else {
                 DispatchQueue.main.async {
-                    self.present(self.navigationListVC, animated: true)
+                    self.presentVC(.navigationVC)
                 }
             }
         }
@@ -68,6 +67,7 @@ class AuthViewController: UIViewController {
             self?.keychain.set("\(text)", forKey: "password")
         }
         alert.addTextField()
+        alert.textFields?.first?.placeholder = "Наприклад: 1234"
         alert.addAction(action)
         self.present(alert, animated: true)
     }
@@ -79,11 +79,24 @@ class AuthViewController: UIViewController {
     @IBAction func newPasswordButton(_ sender: Any) {
         createNewPasswordAlert()
     }
+    
+    @IBAction func signOutGoogleTapped(_ sender: Any) {
+        AuthService.shared.googleSignOut { result in
+            switch result {
+            case .success():
+                self.dismiss(animated: true) {
+                    self.presentVC(.authVC, isAnimated: false)
+                }
+            case .failure(let failure):
+                print("Error signing out: %@", failure)
+            }
+        }
+    }
 }
 
-extension AuthViewController: UITextFieldDelegate {
+extension PinCodeViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard textField.text == keychain.get("password") else { return }
-        self.present(navigationListVC, animated: true)
+        self.presentVC(.navigationVC)
     }
 }

@@ -26,7 +26,7 @@ class ListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.keyboardDismissMode = .onDrag
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTransactionTapped))
-        listListener = ListenerServise.shared.walletObserve(items: viewModel!.getAllItemsForListener(), completion: { [weak self] result in
+        listListener = ListenerServise.shared.transactionsObserve(items: viewModel!.getAllItemsForListener(), completion: { [weak self] result in
             self?.updateUI(result)
         })
     }

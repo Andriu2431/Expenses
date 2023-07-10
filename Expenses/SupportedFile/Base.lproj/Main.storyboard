@@ -1,18 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="knW-RY-lhZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Auth View Controller-->
+        <scene sceneID="DHe-1a-Xqm">
+            <objects>
+                <viewController storyboardIdentifier="AuthVC" modalPresentationStyle="fullScreen" id="4uL-LQ-0AQ" customClass="AuthViewController" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KmY-2I-x0j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B97-w9-FhY" customClass="GIDSignInButton">
+                                <rect key="frame" x="107" y="682" width="200" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="RQB-UL-0HW"/>
+                                    <constraint firstAttribute="height" constant="50" id="z0p-Pz-Pxn"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="googleSignInButton" destination="4uL-LQ-0AQ" eventType="touchUpInside" id="c60-ZB-eEg"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="H4L-Tz-7SK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B97-w9-FhY" firstAttribute="centerX" secondItem="H4L-Tz-7SK" secondAttribute="centerX" id="HlF-ut-l3D"/>
+                            <constraint firstItem="H4L-Tz-7SK" firstAttribute="bottom" secondItem="B97-w9-FhY" secondAttribute="bottom" constant="130" id="deR-bI-yUi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wje-Ku-66l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168" y="135"/>
+        </scene>
+        <!--Pin Code View Controller-->
         <scene sceneID="rhv-6B-Eht">
             <objects>
-                <viewController id="knW-RY-lhZ" customClass="AuthViewController" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PinCodeViewController" modalPresentationStyle="fullScreen" id="knW-RY-lhZ" customClass="PinCodeViewController" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S9p-KL-kEe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,6 +100,14 @@
                                     <action selector="newPasswordButton:" destination="knW-RY-lhZ" eventType="touchUpInside" id="BH0-wp-Bon"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55S-WK-Dpe">
+                                <rect key="frame" x="130.5" y="677" width="153" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Вийти з акаунта"/>
+                                <connections>
+                                    <action selector="signOutGoogleTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="eLm-Lt-Gts"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yIi-tN-UkK"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
@@ -81,11 +120,13 @@
                             <constraint firstItem="Yk3-SH-MUS" firstAttribute="top" secondItem="snT-c2-UIy" secondAttribute="bottom" constant="10" id="N0b-Xk-3wH"/>
                             <constraint firstItem="snT-c2-UIy" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="O1p-vP-vqM"/>
                             <constraint firstItem="Yk3-SH-MUS" firstAttribute="centerX" secondItem="snT-c2-UIy" secondAttribute="centerX" id="PoL-uq-nfJ"/>
+                            <constraint firstItem="55S-WK-Dpe" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="XhC-TQ-H0E"/>
                             <constraint firstItem="TP5-BW-Dxc" firstAttribute="top" secondItem="VAT-Ji-dQg" secondAttribute="bottom" constant="15" id="YOh-K7-TmQ"/>
                             <constraint firstItem="Yk3-SH-MUS" firstAttribute="leading" secondItem="snT-c2-UIy" secondAttribute="leading" id="gIC-yz-B6L"/>
                             <constraint firstItem="h0z-Ej-Ft2" firstAttribute="top" secondItem="Yk3-SH-MUS" secondAttribute="bottom" constant="4" id="gmL-vZ-c8y"/>
                             <constraint firstItem="qyK-GE-pRf" firstAttribute="top" secondItem="yIi-tN-UkK" secondAttribute="top" constant="39" id="kF6-pW-pGU"/>
                             <constraint firstItem="h0z-Ej-Ft2" firstAttribute="leading" secondItem="Yk3-SH-MUS" secondAttribute="leading" id="tbf-N7-Qky"/>
+                            <constraint firstItem="VAT-Ji-dQg" firstAttribute="top" secondItem="55S-WK-Dpe" secondAttribute="bottom" constant="15" id="uhW-Ac-MYw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hsm-gU-f2H"/>
@@ -101,7 +142,7 @@
         <!--0-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="TestPresent" id="BYZ-38-t0r" customClass="ListViewController" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ListViewController" customModule="Expenses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,6 +519,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
