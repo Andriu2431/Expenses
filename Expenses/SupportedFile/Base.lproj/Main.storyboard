@@ -51,7 +51,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-Ji-dQg">
                                 <rect key="frame" x="101" y="727" width="212" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Використати біометрію"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Використати біометрію"/>
                                 <connections>
                                     <action selector="useFaceIdTapped" destination="knW-RY-lhZ" eventType="touchUpInside" id="nTx-kw-lKC"/>
                                 </connections>
@@ -95,7 +95,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP5-BW-Dxc">
                                 <rect key="frame" x="100" y="777" width="214" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Створити новий пароль"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Створити новий пароль"/>
                                 <connections>
                                     <action selector="newPasswordButton:" destination="knW-RY-lhZ" eventType="touchUpInside" id="BH0-wp-Bon"/>
                                 </connections>
@@ -103,7 +103,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55S-WK-Dpe">
                                 <rect key="frame" x="130.5" y="677" width="153" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Вийти з акаунта"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Вийти з акаунта"/>
                                 <connections>
                                     <action selector="signOutGoogleTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="eLm-Lt-Gts"/>
                                 </connections>
@@ -111,6 +111,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yIi-tN-UkK"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="tintColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="snT-c2-UIy" firstAttribute="top" secondItem="qyK-GE-pRf" secondAttribute="bottom" constant="150" id="4Z1-HA-sCc"/>
                             <constraint firstItem="VAT-Ji-dQg" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IIW-BB-p9r"/>

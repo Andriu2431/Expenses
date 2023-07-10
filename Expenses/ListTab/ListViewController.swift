@@ -47,7 +47,7 @@ class ListViewController: UIViewController {
             tableView.reloadData()
             collectionView.reloadData()
         case .failure(let failure):
-            print(failure.localizedDescription)
+            self.presentAlert(title: "Помилка!", massage: failure.localizedDescription)
         }
     }
     

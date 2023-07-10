@@ -49,12 +49,12 @@ class PinCodeViewController: UIViewController {
         var error: NSError?
         
         context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
-        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
-            if let error {
-                print(error)
-            } else {
-                DispatchQueue.main.async {
-                    self.presentVC(.navigationVC)
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, error in
+            DispatchQueue.main.async {
+                if let error {
+                    self?.presentAlert(title: "Помилка!", massage: error.localizedDescription)
+                } else {
+                    self?.presentVC(.navigationVC)
                 }
             }
         }
@@ -81,14 +81,14 @@ class PinCodeViewController: UIViewController {
     }
     
     @IBAction func signOutGoogleTapped(_ sender: Any) {
-        AuthService.shared.googleSignOut { result in
+        AuthService.shared.googleSignOut { [weak self] result in
             switch result {
             case .success():
-                self.dismiss(animated: true) {
-                    self.presentVC(.authVC, isAnimated: false)
+                self?.dismiss(animated: true) {
+                    self?.presentVC(.authVC, isAnimated: false)
                 }
             case .failure(let failure):
-                print("Error signing out: %@", failure)
+                self?.presentAlert(title: "Помилка!", massage: failure.localizedDescription)
             }
         }
     }
