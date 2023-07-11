@@ -25,6 +25,8 @@
 		16DD5E0E2A58208A004A9AA0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD5E0D2A58208A004A9AA0 /* AuthViewController.swift */; };
 		16DD5E102A582666004A9AA0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD5E0F2A582666004A9AA0 /* AuthService.swift */; };
 		16DD5E232A585A91004A9AA0 /* ViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD5E222A585A91004A9AA0 /* ViewController + Extension.swift */; };
+		16DD5E362A5C2F81004A9AA0 /* CustomPinCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD5E352A5C2F81004A9AA0 /* CustomPinCodeButton.swift */; };
+		16DD5E482A5D807C004A9AA0 /* UIAlerrtControler + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD5E472A5D807C004A9AA0 /* UIAlerrtControler + Extension.swift */; };
 		16E0EA782A096B59001EF537 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EA772A096B59001EF537 /* CustomCollectionViewCell.swift */; };
 		16E0EA7A2A098101001EF537 /* CollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EA792A098101001EF537 /* CollectionViewCellModel.swift */; };
 		16E0EBBA2A123F76001EF537 /* ListTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */; };
@@ -61,6 +63,8 @@
 		16DD5E0D2A58208A004A9AA0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		16DD5E0F2A582666004A9AA0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		16DD5E222A585A91004A9AA0 /* ViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Extension.swift"; sourceTree = "<group>"; };
+		16DD5E352A5C2F81004A9AA0 /* CustomPinCodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPinCodeButton.swift; sourceTree = "<group>"; };
+		16DD5E472A5D807C004A9AA0 /* UIAlerrtControler + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlerrtControler + Extension.swift"; sourceTree = "<group>"; };
 		16E0EA772A096B59001EF537 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		16E0EA792A098101001EF537 /* CollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellModel.swift; sourceTree = "<group>"; };
 		16E0EBB92A123F76001EF537 /* ListTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -115,7 +119,8 @@
 				16E0ECEC2A164E71001EF537 /* DetailTab */,
 				16D88BD22940821800E5C30A /* Model */,
 				16E0ECF02A1651C7001EF537 /* Protocols */,
-				16DD5E212A585A75004A9AA0 /* ViewController + Extension */,
+				16DD5E212A585A75004A9AA0 /* Extension */,
+				16DD5E342A5C2F2F004A9AA0 /* CustomUIButton */,
 				1616C315291BBF90000C0043 /* Info.plist */,
 				165021E1293E24AB003CEC30 /* GoogleService-Info.plist */,
 			);
@@ -125,8 +130,8 @@
 		16D88BD0294081D400E5C30A /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				160E94CF2941EC6B00838B21 /* PinCodeViewController.swift */,
 				16DD5E0D2A58208A004A9AA0 /* AuthViewController.swift */,
+				160E94CF2941EC6B00838B21 /* PinCodeViewController.swift */,
 				16DD5E0F2A582666004A9AA0 /* AuthService.swift */,
 			);
 			path = Auth;
@@ -162,12 +167,21 @@
 			path = SupportedFile;
 			sourceTree = "<group>";
 		};
-		16DD5E212A585A75004A9AA0 /* ViewController + Extension */ = {
+		16DD5E212A585A75004A9AA0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				16DD5E222A585A91004A9AA0 /* ViewController + Extension.swift */,
+				16DD5E472A5D807C004A9AA0 /* UIAlerrtControler + Extension.swift */,
 			);
-			path = "ViewController + Extension";
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		16DD5E342A5C2F2F004A9AA0 /* CustomUIButton */ = {
+			isa = PBXGroup;
+			children = (
+				16DD5E352A5C2F81004A9AA0 /* CustomPinCodeButton.swift */,
+			);
+			path = CustomUIButton;
 			sourceTree = "<group>";
 		};
 		16E0ECEB2A164E57001EF537 /* ListTab */ = {
@@ -359,6 +373,7 @@
 				16E0EBC02A12C56C001EF537 /* AddTrnsactionViewModel.swift in Sources */,
 				16CF915D2A03BAD300E3A122 /* ListAllOperationViewModel.swift in Sources */,
 				1616C31E291BCA56000C0043 /* DetailTrasactionVC.swift in Sources */,
+				16DD5E362A5C2F81004A9AA0 /* CustomPinCodeButton.swift in Sources */,
 				1616C30C291BBF8C000C0043 /* ListViewController.swift in Sources */,
 				16E0ECF42A165237001EF537 /* ListTableViewCellViewModelProtocol.swift in Sources */,
 				165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */,
@@ -370,6 +385,7 @@
 				1616C30A291BBF8C000C0043 /* SceneDelegate.swift in Sources */,
 				16DD5E0E2A58208A004A9AA0 /* AuthViewController.swift in Sources */,
 				16E0EBBA2A123F76001EF537 /* ListTableViewCellViewModel.swift in Sources */,
+				16DD5E482A5D807C004A9AA0 /* UIAlerrtControler + Extension.swift in Sources */,
 				165021DE293E14FA003CEC30 /* FirestoreServise.swift in Sources */,
 				165021E4293E319D003CEC30 /* ListenerServise.swift in Sources */,
 				16E0EBBE2A126C5D001EF537 /* EditTransactionViewModel.swift in Sources */,

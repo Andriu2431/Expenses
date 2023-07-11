@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wje-Ku-66l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="168" y="135"/>
+            <point key="canvasLocation" x="1103" y="135"/>
         </scene>
         <!--Pin Code View Controller-->
         <scene sceneID="rhv-6B-Eht">
@@ -48,16 +48,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAT-Ji-dQg">
-                                <rect key="frame" x="101" y="727" width="212" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Використати біометрію"/>
-                                <connections>
-                                    <action selector="useFaceIdTapped" destination="knW-RY-lhZ" eventType="touchUpInside" id="nTx-kw-lKC"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Використайте біометрію або напишіть пароль" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyK-GE-pRf">
-                                <rect key="frame" x="57" y="87" width="300" height="107.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введіть ПІН-код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyK-GE-pRf">
+                                <rect key="frame" x="57" y="87" width="300" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="1pD-pb-bXg"/>
                                 </constraints>
@@ -65,80 +57,401 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yk3-SH-MUS">
-                                <rect key="frame" x="124.5" y="375.5" width="165" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="165" id="HMr-3V-nPB"/>
-                                    <constraint firstAttribute="height" constant="25" id="bIR-5W-O5d"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Напишіть пароль тут" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snT-c2-UIy">
-                                <rect key="frame" x="124.5" y="344.5" width="165" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="165" id="07n-Ss-FsI"/>
-                                    <constraint firstAttribute="height" constant="21" id="QAR-ZN-ywy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0z-Ej-Ft2">
-                                <rect key="frame" x="124.5" y="404.5" width="165" height="1"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="165" id="hy3-MG-a8k"/>
-                                    <constraint firstAttribute="height" constant="1" id="xZu-vz-Xn9"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP5-BW-Dxc">
-                                <rect key="frame" x="100" y="777" width="214" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Створити новий пароль"/>
-                                <connections>
-                                    <action selector="newPasswordButton:" destination="knW-RY-lhZ" eventType="touchUpInside" id="BH0-wp-Bon"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55S-WK-Dpe">
-                                <rect key="frame" x="130.5" y="677" width="153" height="35"/>
+                                <rect key="frame" x="131" y="787.5" width="152.5" height="34.5"/>
+                                <color key="tintColor" red="0.94117647058823528" green="0.2627450980392157" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Вийти з акаунта"/>
                                 <connections>
                                     <action selector="signOutGoogleTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="eLm-Lt-Gts"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z67-JK-sxj">
+                                <rect key="frame" x="167" y="280" width="80" height="350"/>
+                                <subviews>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LAH-jm-Nj7" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="XgD-34-pEw"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="2">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="J3m-jt-y1X"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uva-fN-oT9" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Y3T-v5-b4e"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="5">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="Sdt-Mg-VWU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wn3-Fh-s0F" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="180" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="hWg-ad-bSK"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="8">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="QhG-KB-Je4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBM-gl-o2J" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="270" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="xMT-lr-ENg"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="0">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="xAy-k2-oMG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="NEo-1v-3mb"/>
+                                    <constraint firstAttribute="height" constant="350" id="UjF-ZQ-wea"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dR0-cH-b1Q">
+                                <rect key="frame" x="67" y="280" width="80" height="260"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BM8-sw-eSx" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="h8T-EP-L5X"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="1">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
+                                                <color key="value" systemColor="systemOrangeColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="r4P-SX-N19"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jot-QS-OpT" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="TBz-hO-jj7"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="4">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="Cm3-YV-63e"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwP-WK-uVx" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="180" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="jlg-MS-DWU"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="7">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="c2r-rl-qRd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="u1W-th-FEP"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jfc-R2-rco">
+                                <rect key="frame" x="267" y="280" width="80" height="260"/>
+                                <subviews>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RcY-t1-TmW" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="2dV-54-ljM"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="3">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="G3M-GZ-2Uu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VxP-hI-LJ7" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="hhD-A7-z9O"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="6">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="yJN-D8-8KP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGY-4i-heF" customClass="CustomPinCodeButton" customModule="Expenses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="180" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="bdt-FD-Kmn"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="9">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="45" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pinCodeButtonTapped:" destination="knW-RY-lhZ" eventType="touchUpInside" id="6kJ-tw-gdG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="AKs-ls-hr1"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKr-cE-dAK">
+                                <rect key="frame" x="107" y="210" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Sc2-Sc-But"/>
+                                    <constraint firstAttribute="height" constant="50" id="VSg-dW-7fC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tK7-CY-Axf">
+                                <rect key="frame" x="77" y="560" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="AAg-CB-uK7"/>
+                                    <constraint firstAttribute="height" constant="60" id="ZqW-S6-mTC"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="face-id"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="useFaceIdTapped" destination="knW-RY-lhZ" eventType="touchUpInside" id="f3r-vv-BmB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JA-hO-ZyZ">
+                                <rect key="frame" x="284.5" y="570" width="45" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MdF-fo-qlD"/>
+                                    <constraint firstAttribute="width" constant="45" id="VqV-Bi-YHP"/>
+                                </constraints>
+                                <color key="tintColor" red="0.94117647058823528" green="0.2627450980392157" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="delete"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isConfiguration" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deletePasswordEntered:" destination="knW-RY-lhZ" eventType="touchUpInside" id="3bF-8c-E3R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP5-BW-Dxc">
+                                <rect key="frame" x="132.5" y="733" width="149" height="34.5"/>
+                                <color key="tintColor" red="0.91764705879999997" green="0.64313725489999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Змінити пароль"/>
+                                <connections>
+                                    <action selector="changePasswordButton:" destination="knW-RY-lhZ" eventType="touchUpInside" id="BH0-wp-Bon"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yIi-tN-UkK"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
-                        <color key="tintColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="snT-c2-UIy" firstAttribute="top" secondItem="qyK-GE-pRf" secondAttribute="bottom" constant="150" id="4Z1-HA-sCc"/>
-                            <constraint firstItem="VAT-Ji-dQg" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IIW-BB-p9r"/>
                             <constraint firstItem="qyK-GE-pRf" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IYT-Hs-r6O"/>
-                            <constraint firstItem="yIi-tN-UkK" firstAttribute="bottom" secondItem="TP5-BW-Dxc" secondAttribute="bottom" constant="50" id="JAB-ak-xmu"/>
+                            <constraint firstItem="0JA-hO-ZyZ" firstAttribute="centerY" secondItem="QBM-gl-o2J" secondAttribute="centerY" id="KPF-0z-n2F"/>
                             <constraint firstItem="TP5-BW-Dxc" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="LI6-fq-OWd"/>
-                            <constraint firstItem="Yk3-SH-MUS" firstAttribute="top" secondItem="snT-c2-UIy" secondAttribute="bottom" constant="10" id="N0b-Xk-3wH"/>
-                            <constraint firstItem="snT-c2-UIy" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="O1p-vP-vqM"/>
-                            <constraint firstItem="Yk3-SH-MUS" firstAttribute="centerX" secondItem="snT-c2-UIy" secondAttribute="centerX" id="PoL-uq-nfJ"/>
+                            <constraint firstItem="Jfc-R2-rco" firstAttribute="top" secondItem="z67-JK-sxj" secondAttribute="top" id="Nrv-LQ-xeM"/>
+                            <constraint firstItem="dR0-cH-b1Q" firstAttribute="top" secondItem="z67-JK-sxj" secondAttribute="top" id="S7p-Ql-BJ8"/>
+                            <constraint firstItem="NKr-cE-dAK" firstAttribute="top" secondItem="qyK-GE-pRf" secondAttribute="top" constant="123" id="Wnc-xg-brM"/>
                             <constraint firstItem="55S-WK-Dpe" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="XhC-TQ-H0E"/>
-                            <constraint firstItem="TP5-BW-Dxc" firstAttribute="top" secondItem="VAT-Ji-dQg" secondAttribute="bottom" constant="15" id="YOh-K7-TmQ"/>
-                            <constraint firstItem="Yk3-SH-MUS" firstAttribute="leading" secondItem="snT-c2-UIy" secondAttribute="leading" id="gIC-yz-B6L"/>
-                            <constraint firstItem="h0z-Ej-Ft2" firstAttribute="top" secondItem="Yk3-SH-MUS" secondAttribute="bottom" constant="4" id="gmL-vZ-c8y"/>
+                            <constraint firstItem="yIi-tN-UkK" firstAttribute="bottom" secondItem="55S-WK-Dpe" secondAttribute="bottom" constant="40" id="YKD-jW-uYe"/>
+                            <constraint firstItem="z67-JK-sxj" firstAttribute="centerY" secondItem="yIi-tN-UkK" secondAttribute="centerY" id="eU8-hB-w9Y"/>
+                            <constraint firstItem="NKr-cE-dAK" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="gPa-eW-s55"/>
                             <constraint firstItem="qyK-GE-pRf" firstAttribute="top" secondItem="yIi-tN-UkK" secondAttribute="top" constant="39" id="kF6-pW-pGU"/>
-                            <constraint firstItem="h0z-Ej-Ft2" firstAttribute="leading" secondItem="Yk3-SH-MUS" secondAttribute="leading" id="tbf-N7-Qky"/>
-                            <constraint firstItem="VAT-Ji-dQg" firstAttribute="top" secondItem="55S-WK-Dpe" secondAttribute="bottom" constant="15" id="uhW-Ac-MYw"/>
+                            <constraint firstItem="0JA-hO-ZyZ" firstAttribute="centerX" secondItem="Jfc-R2-rco" secondAttribute="centerX" id="ocR-5E-Kox"/>
+                            <constraint firstItem="z67-JK-sxj" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="raR-J2-rln"/>
+                            <constraint firstItem="55S-WK-Dpe" firstAttribute="top" secondItem="TP5-BW-Dxc" secondAttribute="bottom" constant="20" id="s3Y-Bb-ZGS"/>
+                            <constraint firstItem="tK7-CY-Axf" firstAttribute="centerX" secondItem="dR0-cH-b1Q" secondAttribute="centerX" id="saB-sR-17a"/>
+                            <constraint firstItem="tK7-CY-Axf" firstAttribute="centerY" secondItem="QBM-gl-o2J" secondAttribute="centerY" id="v7d-lq-tkL"/>
+                            <constraint firstItem="Jfc-R2-rco" firstAttribute="leading" secondItem="z67-JK-sxj" secondAttribute="trailing" constant="20" id="yqD-X8-hsP"/>
+                            <constraint firstItem="z67-JK-sxj" firstAttribute="leading" secondItem="dR0-cH-b1Q" secondAttribute="trailing" constant="20" id="zmI-OA-YzC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hsm-gU-f2H"/>
                     <connections>
-                        <outlet property="passwordTextField" destination="Yk3-SH-MUS" id="I5f-tj-Pk5"/>
-                        <outlet property="touchOrFaceID" destination="VAT-Ji-dQg" id="Nrz-il-aR9"/>
+                        <outlet property="currentPinCode" destination="NKr-cE-dAK" id="RoT-b0-rhT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyO-as-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="995.65217391304361" y="134.59821428571428"/>
+            <point key="canvasLocation" x="1971.0144927536232" y="134.59821428571428"/>
         </scene>
         <!--0-->
         <scene sceneID="tne-QT-ifu">
@@ -342,7 +655,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2808.6956521739135" y="134.59821428571428"/>
+            <point key="canvasLocation" x="3718.840579710145" y="134.59821428571428"/>
         </scene>
         <!--Detail TrasactionVC-->
         <scene sceneID="UdN-bz-dvK">
@@ -494,7 +807,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wys-5c-Xy7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3633.3333333333335" y="134.59821428571428"/>
+            <point key="canvasLocation" x="4543.4782608695659" y="134.59821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="POm-K1-5mE">
@@ -514,10 +827,47 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vyk-aZ-QKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="134.59821428571428"/>
+            <point key="canvasLocation" x="2868.115942028986" y="134.59821428571428"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="BM8-sw-eSx">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="LAH-jm-Nj7">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="NGY-4i-heF">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="QBM-gl-o2J">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="RcY-t1-TmW">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="VxP-hI-LJ7">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="Wn3-Fh-s0F">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="jot-QS-OpT">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="lwP-WK-uVx">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+        <designable name="uva-fN-oT9">
+            <size key="intrinsicContentSize" width="30" height="64"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="delete" width="512" height="512"/>
+        <image name="face-id" width="512" height="512"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -526,6 +876,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
