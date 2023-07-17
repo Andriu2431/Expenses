@@ -9,5 +9,7 @@ target 'Expenses' do
 pod 'FirebaseFirestore'
 pod 'Firebase'
 pod 'KeychainSwift', '~> 20.0'
+pod 'Firebase/Auth'
+pod 'GoogleSignIn'
 
 end

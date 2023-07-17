@@ -7,19 +7,22 @@
 
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class FirestoreServise {
     static let shared = FirestoreServise()
     
-    var db = Firestore.firestore()
-    
-    private var walletRef: CollectionReference {
-        return db.collection("wallet")
+    private let db = Firestore.firestore()
+    private var currentUserId: String {
+        return Auth.auth().currentUser?.uid ?? ""
+    }
+    private var transactionsRef: CollectionReference {
+        return db.collection(["users", currentUserId, "transactions"].joined(separator: "/"))
     }
     
     func saveTransactionWith(description: String, sum: Int, operation: Int, type: String, date: Date) {
         let item = ExpensesItem(description: description, sumTransaction: sum, operation: operation, operationType: type, dateTransaction: date, id: UUID().uuidString)
-        self.walletRef.document(item.id).setData(item.representation) { error in
+        self.transactionsRef.document(item.id).setData(item.representation) { error in
             if let error {
                 print(error.localizedDescription)
             } 
@@ -27,7 +30,7 @@ class FirestoreServise {
     }
     
     func deleteTransaction(itemId: String) {
-        walletRef.document(itemId).delete { error in
+        transactionsRef.document(itemId).delete { error in
             if let error {
                 print(error.localizedDescription)
             }
@@ -41,7 +44,7 @@ class FirestoreServise {
                                         "operationType": type,
                                         "dateTransaction": date,
                                         "uid": id]
-        walletRef.document(id).updateData(dictionry) { error in
+        transactionsRef.document(id).updateData(dictionry) { error in
             if let error {
                 print(error.localizedDescription)
             }

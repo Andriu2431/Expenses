@@ -6,18 +6,22 @@
 //
 
 import FirebaseFirestore
+import FirebaseAuth
 
 class ListenerServise {
     static let shared = ListenerServise()
     
     private let db = Firestore.firestore()
-    private var wallerRef: CollectionReference {
-        return db.collection("wallet")
+    private var currentUserId: String {
+        return Auth.auth().currentUser?.uid ?? ""
+    }
+    private var transactionsRef: CollectionReference {
+        return db.collection(["users", currentUserId, "transactions"].joined(separator: "/"))
     }
     
-    func walletObserve(items: [ExpensesItem], completion: @escaping (Result<[ExpensesItem], Error>) -> Void) -> ListenerRegistration? {
+    func transactionsObserve(items: [ExpensesItem], completion: @escaping (Result<[ExpensesItem], Error>) -> Void) -> ListenerRegistration? {
         var items = items
-        let wallerListener = wallerRef.addSnapshotListener { querySnapshot, error in
+        let transactionsListener = transactionsRef.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 completion(.failure(error!))
                 return
@@ -38,6 +42,6 @@ class ListenerServise {
             }
             completion(.success(items))
         }
-        return wallerListener
+        return transactionsListener
     }
 }

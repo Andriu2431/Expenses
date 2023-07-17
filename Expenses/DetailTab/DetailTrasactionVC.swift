@@ -25,6 +25,7 @@ class DetailTrasactionVC: UIViewController {
         changeColorSegmentedControl()
         operation.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+        self.view.layer.insertSublayer(createGradientLayer(), at: 0)
     }
     
     private func setup() {
@@ -57,7 +58,7 @@ class DetailTrasactionVC: UIViewController {
     
     @IBAction func saveButtonTaped(_ sender: Any) {
         guard let sum = Int(sumTransaction.text ?? "") else {
-            self.createAlert(message: "Введіть коректну суму!")
+            self.presentAlert(title: "Помилка!", massage: "Введіть коректну суму!")
             return
         }
         viewModel?.saveTransaction(description: descriptionTextField.text ?? "",
@@ -69,7 +70,7 @@ class DetailTrasactionVC: UIViewController {
     
     @IBAction func updateButtonTaped(_ sender: Any) {
         guard let sum = Int(sumTransaction.text ?? "") else {
-            self.createAlert(message: "Введіть коректну суму!")
+            self.presentAlert(title: "Помилка!", massage: "Введіть коректну суму!")
             return
         }
 
@@ -78,13 +79,6 @@ class DetailTrasactionVC: UIViewController {
                                      operation: operation.selectedSegmentIndex,
                                      date: datePicker.date)
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func createAlert(message: String, title: String = "Ok") {
-        let alert = UIAlertController(title: "Стоп!", message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: title, style: .default)
-        alert.addAction(ok)
-        self.present(alert, animated: true)
     }
 }
 
