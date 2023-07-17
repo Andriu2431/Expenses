@@ -8,47 +8,48 @@
 import FirebaseFirestore
 
 struct ExpensesItem: Hashable {
-    var name: String
-    var cost: String
-    var operation: String
-    var date: String
-    var total: String
+    var description: String
+    var sumTransaction: Int
+    var operation: Int
+    var operationType: String
+    var dateTransaction: Date
     var id: String
     
-    init(name: String, cost: String, operation: String, date: String, total: String, id: String) {
-        self.name = name
-        self.cost = cost
+    init(description: String, sumTransaction: Int, operation: Int, operationType: String, dateTransaction: Date, id: String) {
+        self.description = description
+        self.sumTransaction = sumTransaction
         self.operation = operation
-        self.date = date
-        self.total = total
+        self.operationType = operationType
+        self.dateTransaction = dateTransaction
         self.id = id
     }
     
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
-        guard let name = data["name"] as? String,
-              let cost = data["cost"] as? String,
-              let operation = data["operation"] as? String,
-              let date = data["date"] as? String,
-              let total = data["total"] as? String,
-              let id = data["id"] as? String
+        guard let description = data["description"] as? String,
+              let sumTransaction = data["sumTransaction"] as? Int,
+              let operation = data["operation"] as? Int,
+              let operationType = data["operationType"] as? String,
+              let dateTransaction = data["dateTransaction"] as? Timestamp,
+              let id = data["uid"] as? String
         else { return nil }
         
-        self.name = name
-        self.cost = cost
+        self.description = description
+        self.sumTransaction = sumTransaction
         self.operation = operation
-        self.date = date
-        self.total = total
+        self.operationType = operationType
+        self.dateTransaction = dateTransaction.dateValue()
         self.id = id
     }
     
     var representation: [String: Any] {
-        var rep = ["name": name]
-        rep["cost"] = cost
+        var rep = [String: Any]()
+        rep["description"] = description
+        rep["sumTransaction"] = sumTransaction
         rep["operation"] = operation
-        rep["date"] = date
-        rep["total"] = total
-        rep["id"] = id
+        rep["operationType"] = operationType
+        rep["dateTransaction"] = dateTransaction
+        rep["uid"] = id
         return rep
     }
     
