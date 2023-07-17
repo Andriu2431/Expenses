@@ -16,7 +16,6 @@
 		1616C314291BBF90000C0043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1616C312291BBF90000C0043 /* LaunchScreen.storyboard */; };
 		1616C31C291BC295000C0043 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31B291BC295000C0043 /* CustomTableViewCell.swift */; };
 		1616C31E291BCA56000C0043 /* DetailTrasactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1616C31D291BCA56000C0043 /* DetailTrasactionVC.swift */; };
-		16375777293F3A9100596A30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 16375776293F3A9100596A30 /* .gitignore */; };
 		165021DE293E14FA003CEC30 /* FirestoreServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021DD293E14FA003CEC30 /* FirestoreServise.swift */; };
 		165021E0293E172D003CEC30 /* ExpensesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165021DF293E172D003CEC30 /* ExpensesItem.swift */; };
 		165021E2293E24AB003CEC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 165021E1293E24AB003CEC30 /* GoogleService-Info.plist */; };
@@ -54,7 +53,6 @@
 		1616C315291BBF90000C0043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1616C31B291BC295000C0043 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		1616C31D291BCA56000C0043 /* DetailTrasactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrasactionVC.swift; sourceTree = "<group>"; };
-		16375776293F3A9100596A30 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		165021DD293E14FA003CEC30 /* FirestoreServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServise.swift; sourceTree = "<group>"; };
 		165021DF293E172D003CEC30 /* ExpensesItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesItem.swift; sourceTree = "<group>"; };
 		165021E1293E24AB003CEC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 		1616C2FB291BBF8C000C0043 = {
 			isa = PBXGroup;
 			children = (
-				16375776293F3A9100596A30 /* .gitignore */,
 				1616C306291BBF8C000C0043 /* Expenses */,
 				1616C305291BBF8C000C0043 /* Products */,
 				17AF5507E9DA2976C2552D7C /* Pods */,
@@ -311,7 +308,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16375777293F3A9100596A30 /* .gitignore in Resources */,
 				165021E2293E24AB003CEC30 /* GoogleService-Info.plist in Resources */,
 				1616C314291BBF90000C0043 /* LaunchScreen.storyboard in Resources */,
 				1616C311291BBF90000C0043 /* Assets.xcassets in Resources */,

@@ -25,6 +25,7 @@ class DetailTrasactionVC: UIViewController {
         changeColorSegmentedControl()
         operation.addTarget(self, action: #selector(changeColorSegmentedControl), for: .valueChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+        self.view.layer.insertSublayer(createGradientLayer(), at: 0)
     }
     
     private func setup() {

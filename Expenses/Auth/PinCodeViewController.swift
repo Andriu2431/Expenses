@@ -24,23 +24,12 @@ class PinCodeViewController: UIViewController {
         keychain.get("password")
     }
     
-    private var gradientLayer: CAGradientLayer! {
-        didSet {
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.colors = [ #colorLiteral(red: 0.9170659184, green: 0.644534111, blue: 0.9398914576, alpha: 1).cgColor, #colorLiteral(red: 0.3300272226, green: 0.2663447857, blue: 0.5687814951, alpha: 1).cgColor]
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width,
-                                         height: self.view.bounds.height)
-            view.layer.insertSublayer(gradientLayer, at: 0)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        gradientLayer = CAGradientLayer()
         keychain.synchronizable = true
         biometricLogin()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+        self.view.layer.insertSublayer(createGradientLayer(), at: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

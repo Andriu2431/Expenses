@@ -741,18 +741,11 @@
                                 </constraints>
                                 <locale key="locale" localeIdentifier="uk"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYd-yp-orX">
-                                <rect key="frame" x="168.5" y="756" width="77" height="34.5"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="update"/>
-                                <connections>
-                                    <action selector="updateButtonTaped:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="VZL-j5-kLs"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BQ-l6-YoB">
                                 <rect key="frame" x="177.5" y="804" width="59" height="34.5"/>
+                                <color key="tintColor" red="0.91764705879999997" green="0.64313725489999995" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="save"/>
+                                <buttonConfiguration key="configuration" style="gray" title="save"/>
                                 <connections>
                                     <action selector="saveButtonTaped:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="ivK-fw-2U7"/>
                                 </connections>
@@ -773,9 +766,18 @@
                                     <constraint firstAttribute="height" constant="150" id="WMk-2w-2j8"/>
                                 </constraints>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYd-yp-orX">
+                                <rect key="frame" x="168.5" y="749" width="77.5" height="35"/>
+                                <color key="tintColor" red="0.91764705879999997" green="0.64313725489999995" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="update"/>
+                                <connections>
+                                    <action selector="updateButtonTaped:" destination="BxH-Vq-C4U" eventType="touchUpInside" id="VZL-j5-kLs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rQ5-SP-V11"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sYd-yp-orX" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="40l-p4-Nyy"/>
                             <constraint firstItem="q78-vB-5X9" firstAttribute="centerX" secondItem="rQ5-SP-V11" secondAttribute="centerX" id="ETP-ml-h2c"/>
@@ -791,7 +793,7 @@
                             <constraint firstItem="OtH-pF-bA0" firstAttribute="leading" secondItem="rQ5-SP-V11" secondAttribute="leading" constant="20" id="pNS-b2-oXY"/>
                             <constraint firstItem="q78-vB-5X9" firstAttribute="leading" secondItem="rQ5-SP-V11" secondAttribute="leading" id="uq3-FC-Fia"/>
                             <constraint firstItem="rQ5-SP-V11" firstAttribute="trailing" secondItem="OtH-pF-bA0" secondAttribute="trailing" constant="20" id="vX8-Ez-ycW"/>
-                            <constraint firstItem="rQ5-SP-V11" firstAttribute="bottom" secondItem="sYd-yp-orX" secondAttribute="bottom" constant="71.5" id="x30-wm-AWp"/>
+                            <constraint firstItem="9BQ-l6-YoB" firstAttribute="top" secondItem="sYd-yp-orX" secondAttribute="bottom" constant="20" id="wmf-we-kDe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Ha-ez-krG"/>
@@ -873,9 +875,6 @@
         </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
