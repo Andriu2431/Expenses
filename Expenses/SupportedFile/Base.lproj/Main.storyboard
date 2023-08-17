@@ -363,16 +363,6 @@
                                     <constraint firstAttribute="width" constant="80" id="AKs-ls-hr1"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKr-cE-dAK">
-                                <rect key="frame" x="107" y="210" width="200" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Sc2-Sc-But"/>
-                                    <constraint firstAttribute="height" constant="50" id="VSg-dW-7fC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tK7-CY-Axf">
                                 <rect key="frame" x="77" y="560" width="60" height="60"/>
                                 <constraints>
@@ -420,20 +410,27 @@
                                     <action selector="changePasswordButton:" destination="knW-RY-lhZ" eventType="touchUpInside" id="BH0-wp-Bon"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1a-Zb-VMT" customClass="Passcode" customModule="Expenses" customModuleProvider="target">
+                                <rect key="frame" x="107" y="200" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="eaO-sP-rua"/>
+                                    <constraint firstAttribute="height" constant="50" id="fE2-1z-FJ1"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yIi-tN-UkK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="F1a-Zb-VMT" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="9X3-ta-HQQ"/>
                             <constraint firstItem="qyK-GE-pRf" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="IYT-Hs-r6O"/>
                             <constraint firstItem="0JA-hO-ZyZ" firstAttribute="centerY" secondItem="QBM-gl-o2J" secondAttribute="centerY" id="KPF-0z-n2F"/>
                             <constraint firstItem="TP5-BW-Dxc" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="LI6-fq-OWd"/>
                             <constraint firstItem="Jfc-R2-rco" firstAttribute="top" secondItem="z67-JK-sxj" secondAttribute="top" id="Nrv-LQ-xeM"/>
                             <constraint firstItem="dR0-cH-b1Q" firstAttribute="top" secondItem="z67-JK-sxj" secondAttribute="top" id="S7p-Ql-BJ8"/>
-                            <constraint firstItem="NKr-cE-dAK" firstAttribute="top" secondItem="qyK-GE-pRf" secondAttribute="top" constant="123" id="Wnc-xg-brM"/>
                             <constraint firstItem="55S-WK-Dpe" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="XhC-TQ-H0E"/>
                             <constraint firstItem="yIi-tN-UkK" firstAttribute="bottom" secondItem="55S-WK-Dpe" secondAttribute="bottom" constant="40" id="YKD-jW-uYe"/>
+                            <constraint firstItem="z67-JK-sxj" firstAttribute="top" secondItem="F1a-Zb-VMT" secondAttribute="bottom" constant="30" id="bnE-fg-WNQ"/>
                             <constraint firstItem="z67-JK-sxj" firstAttribute="centerY" secondItem="yIi-tN-UkK" secondAttribute="centerY" id="eU8-hB-w9Y"/>
-                            <constraint firstItem="NKr-cE-dAK" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="gPa-eW-s55"/>
                             <constraint firstItem="qyK-GE-pRf" firstAttribute="top" secondItem="yIi-tN-UkK" secondAttribute="top" constant="39" id="kF6-pW-pGU"/>
                             <constraint firstItem="0JA-hO-ZyZ" firstAttribute="centerX" secondItem="Jfc-R2-rco" secondAttribute="centerX" id="ocR-5E-Kox"/>
                             <constraint firstItem="z67-JK-sxj" firstAttribute="centerX" secondItem="yIi-tN-UkK" secondAttribute="centerX" id="raR-J2-rln"/>
@@ -446,7 +443,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hsm-gU-f2H"/>
                     <connections>
-                        <outlet property="currentPinCode" destination="NKr-cE-dAK" id="RoT-b0-rhT"/>
+                        <outlet property="passcodeView" destination="F1a-Zb-VMT" id="Ibl-6Y-5G0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyO-as-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -672,7 +669,7 @@
                                         <rect key="frame" x="25" y="34.5" width="250" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="9J6-Ea-hYL"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="FfY-un-abr"/>
+                                            <constraint firstAttribute="width" constant="250" id="FfY-un-abr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>

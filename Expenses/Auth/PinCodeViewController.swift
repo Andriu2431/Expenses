@@ -11,18 +11,11 @@ import KeychainSwift
 import FirebaseAuth
 
 class PinCodeViewController: UIViewController {
-
-    @IBOutlet weak var currentPinCode: UILabel!
+    
+    @IBOutlet weak var passcodeView: Passcode!
     
     private let keychain = KeychainSwift()
-    private var passwordEntered = "" {
-        didSet {
-            currentPinCode.text = passwordEntered
-        }
-    }
-    private var myPassword: String? {
-        keychain.get("password")
-    }
+    private var myPassword: String? { keychain.get("password") }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,23 +121,17 @@ class PinCodeViewController: UIViewController {
     }
     
     @IBAction func pinCodeButtonTapped(_ sender: UIButton) {
-        passwordEntered += "\(sender.tag)"
-        
-        if passwordEntered.count == 4 {
-            if passwordEntered == myPassword {
-                self.presentVC(.navigationVC)
+        passcodeView.insertText("\(sender.tag)")
+        passcodeView.didFinishedEnterCode = { [weak self] code in
+            if code == self?.myPassword {
+                self?.presentVC(.navigationVC)
             } else {
-                passwordEntered = ""
+                self?.passcodeView.clearAllCode()
             }
-        } else if passwordEntered.count > 4 {
-            passwordEntered = ""
         }
     }
     
     @IBAction func deletePasswordEntered(_ sender: UIButton) {
-        if !passwordEntered.isEmpty {
-            passwordEntered.removeLast()
-            currentPinCode.text = passwordEntered
-        }
+        passcodeView.deleteBackward()
     }
 }
