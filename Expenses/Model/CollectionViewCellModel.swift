@@ -10,5 +10,5 @@ import Foundation
 struct CollectionViewCellModel {
     let iconName: String
     let expenses: Int
-    let operation: Operation
+    let operation: String
 }

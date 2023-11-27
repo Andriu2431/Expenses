@@ -28,6 +28,7 @@ class CustomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         cornerView.clipsToBounds = true
         cornerView.layer.cornerRadius = 20
         cornerView.layer.borderColor = UIColor.gray.cgColor

@@ -82,7 +82,7 @@ class ListAllOperationViewModel: ListTableViewViewModelProtocol {
     func sortedBy(indexPath: IndexPath, selected: Bool) {
         if selected {
             let selectedCollectionCell = collectionViewCells[indexPath.row]
-            let sortedItems = items.filter { $0.operationType == selectedCollectionCell.operation.rawValue }
+            let sortedItems = items.filter { $0.operationType == selectedCollectionCell.operation }
             self.items = sortedItems
         } else {
             self.items = coppyItems
@@ -98,21 +98,25 @@ class ListAllOperationViewModel: ListTableViewViewModelProtocol {
     
     private func getCollectionViewCells() -> [CollectionViewCellModel] {
         var operationTypeItems = [CollectionViewCellModel]()
+        var totalExpenses = 0
         
         Operation.allCases.forEach { operation in
             let expenses = calculateFor(operation: operation)
             if expenses != 0 {
-                operationTypeItems.append(CollectionViewCellModel(iconName: operation.rawValue, expenses: expenses, operation: operation))
+                operationTypeItems.append(CollectionViewCellModel(iconName: operation.rawValue, expenses: expenses, operation: operation.rawValue))
             }
+            if expenses < 0 { totalExpenses += expenses }
         }
+        
+        operationTypeItems.append(CollectionViewCellModel(iconName: "Тотал витрат", expenses: totalExpenses, operation: "Тотал витрат"))
         return operationTypeItems
     }
     
     private func calculateFor(operation: Operation) -> Int {
         var cost = 0
         
-        let filterItesm = items.filter {$0.operationType == operation.rawValue}
-        filterItesm.forEach { item in
+        let filterItems = items.filter {$0.operationType == operation.rawValue}
+        filterItems.forEach { item in
             if item.operation == 0 {
                 cost += item.sumTransaction
             } else {
